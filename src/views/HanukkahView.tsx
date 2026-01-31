@@ -397,17 +397,21 @@ export function HanukkahView() {
 
                     {/* Hint */}
                     {puzzle.hint && (
-                        <div className="bg-zinc-800/50 border border-zinc-700 rounded-lg p-3 mb-3">
+                        <div className="bg-gradient-to-br from-yellow-500/10 to-amber-600/5 border border-yellow-500/20 rounded-xl p-4 mb-4 backdrop-blur-sm">
                             <button
                                 onClick={() => setShowHint(!showHint)}
-                                className="flex items-center gap-2 text-yellow-400 font-medium text-sm"
+                                className="flex items-center gap-2 text-yellow-400 font-semibold text-sm hover:text-yellow-300 transition-colors"
                             >
-                                💡 Ledtråd {showHint ? '▼' : '▶'}
+                                <span className="text-lg">💡</span> 
+                                <span>Ledtråd</span>
+                                <span className="text-yellow-500/60 text-xs ml-1">{showHint ? '▼' : '▶'}</span>
                             </button>
                             {showHint && (
-                                <p className="text-yellow-200/80 text-sm mt-2">
-                                    {puzzle.hint}
-                                </p>
+                                <div className="mt-3 pl-7 border-l-2 border-yellow-500/30">
+                                    <p className="text-yellow-100/90 text-sm leading-relaxed">
+                                        {puzzle.hint}
+                                    </p>
+                                </div>
                             )}
                         </div>
                     )}
