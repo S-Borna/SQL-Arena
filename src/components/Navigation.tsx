@@ -31,15 +31,18 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
 
   return (
     <>
-      <header className="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-white/5 bg-[#050508]/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-14">
+          <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <div className="flex items-center gap-2">
-                <svg viewBox="0 0 64 64" className="w-7 h-7 text-cyan-400" fill="currentColor">
-                  <path d="M32 4C18.7 4 8 9.4 8 16v32c0 6.6 10.7 12 24 12s24-5.4 24-12V16c0-6.6-10.7-12-24-12zm0 4c11.6 0 20 4.5 20 8s-8.4 8-20 8-20-4.5-20-8 8.4-8 20-8zm20 40c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V48zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V36zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V24z" />
-                </svg>
-                <span className="font-semibold text-lg tracking-tight">SQL Arena</span>
+              <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onViewChange('arena')}>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-cyan-500/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <svg viewBox="0 0 64 64" className="relative w-8 h-8 text-cyan-400 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)] transition-all" fill="currentColor">
+                    <path d="M32 4C18.7 4 8 9.4 8 16v32c0 6.6 10.7 12 24 12s24-5.4 24-12V16c0-6.6-10.7-12-24-12zm0 4c11.6 0 20 4.5 20 8s-8.4 8-20 8-20-4.5-20-8 8.4-8 20-8zm20 40c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V48zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V36zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V24z" />
+                  </svg>
+                </div>
+                <span className="font-bold text-lg tracking-tight text-white">SQL Arena</span>
               </div>
 
               <nav className="flex items-center gap-1">
@@ -48,34 +51,39 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
                     key={item.id}
                     onClick={() => onViewChange(item.id)}
                     className={`
-                      px-4 py-2 rounded-lg text-sm font-medium transition-all
+                      relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200
                       ${currentView === item.id
-                        ? 'bg-zinc-800 text-cyan-400'
-                        : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'
+                        ? 'text-cyan-400'
+                        : 'text-zinc-400 hover:text-white'
                       }
                     `}
                   >
-                    <span className="mr-2">{item.icon}</span>
-                    {item.label}
+                    {currentView === item.id && (
+                      <div className="absolute inset-0 bg-white/5 border border-white/10 rounded-xl" />
+                    )}
+                    <span className="relative flex items-center gap-2">
+                      <span>{item.icon}</span>
+                      {item.label}
+                    </span>
                   </button>
                 ))}
               </nav>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {/* Cheat Sheet Button */}
               <button
                 onClick={() => setShowCheatSheet(true)}
-                className="px-3 py-1.5 bg-zinc-800/50 text-zinc-400 hover:text-cyan-400 hover:bg-zinc-800 rounded-lg text-sm font-medium transition-colors"
+                className="px-3 py-2 glass-card text-zinc-400 hover:text-cyan-400 rounded-xl text-sm font-medium transition-all hover:border-cyan-500/30"
                 title="SQL Cheat Sheet"
               >
                 📋 Cheat Sheet
               </button>
 
               {streak > 0 && (
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/50 rounded-full">
-                  <span className="text-orange-400">🔥</span>
-                  <span className="text-sm font-medium text-zinc-300">{streak} streak</span>
+                <div className="flex items-center gap-2 px-3 py-2 glass-card rounded-full">
+                  <span className="text-orange-400 animate-pulse">🔥</span>
+                  <span className="text-sm font-semibold text-white">{streak}</span>
                 </div>
               )}
               <UserMenu />

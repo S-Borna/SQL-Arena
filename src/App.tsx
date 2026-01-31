@@ -48,10 +48,13 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+      <div className="min-h-screen flex items-center justify-center bg-[#050508]">
         <div className="text-center">
-          <div className="inline-block w-12 h-12 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin mb-4" />
-          <p className="text-zinc-400 font-mono">Laddar SQL Arena...</p>
+          <div className="relative">
+            <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl animate-pulse" />
+            <div className="relative inline-block w-14 h-14 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin mb-4" />
+          </div>
+          <p className="text-zinc-400 font-mono text-sm">Laddar SQL Arena...</p>
         </div>
       </div>
     );
@@ -59,14 +62,14 @@ function App() {
 
   if (loadError) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
-        <div className="text-center max-w-md">
-          <div className="text-red-400 text-5xl mb-4">!</div>
-          <h1 className="text-xl font-semibold text-zinc-100 mb-2">Kunde inte ladda SQL Arena</h1>
-          <p className="text-zinc-400 mb-4">{loadError}</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#050508]">
+        <div className="text-center max-w-md glass-card p-8 rounded-2xl">
+          <div className="text-red-400 text-5xl mb-4">⚠️</div>
+          <h1 className="text-xl font-bold text-white mb-2">Kunde inte ladda SQL Arena</h1>
+          <p className="text-zinc-400 mb-6">{loadError}</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
+            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:from-cyan-400 hover:to-blue-400 transition-all"
           >
             Försök igen
           </button>
@@ -110,7 +113,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col">
+    <div className="min-h-screen bg-[#050508] flex flex-col">
       <Navigation
         currentView={currentView}
         onViewChange={setCurrentView}
