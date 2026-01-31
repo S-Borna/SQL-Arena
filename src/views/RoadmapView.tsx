@@ -187,7 +187,7 @@ export function RoadmapView({ onNavigateToArena }: RoadmapViewProps) {
           <div className="grid grid-cols-2 gap-2">
             {courseGoals.map(goal => (
               <div key={goal.id} className="flex items-start gap-2 text-sm">
-                <span className="px-1.5 py-0.5 bg-zinc-800 text-cyan-400 rounded text-xs font-mono">
+                <span className="px-1.5 py-0.5 bg-zinc-800 text-fuchsia-400 rounded text-xs font-mono">
                   {goal.id}
                 </span>
                 <span className="text-zinc-400">{goal.title}</span>
@@ -207,7 +207,7 @@ export function RoadmapView({ onNavigateToArena }: RoadmapViewProps) {
                 className="w-full px-6 py-4 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-full bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center font-bold">
                     {block.id}
                   </div>
                   <div className="text-left">
@@ -218,7 +218,7 @@ export function RoadmapView({ onNavigateToArena }: RoadmapViewProps) {
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1">
                     {block.courseGoals.map(id => (
-                      <span key={id} className="px-1.5 py-0.5 bg-zinc-800 text-cyan-400 text-xs rounded font-mono">
+                      <span key={id} className="px-1.5 py-0.5 bg-zinc-800 text-fuchsia-400 text-xs rounded font-mono">
                         {id}
                       </span>
                     ))}
@@ -237,7 +237,7 @@ export function RoadmapView({ onNavigateToArena }: RoadmapViewProps) {
                       <ul className="space-y-2">
                         {block.topics.map((topic, index) => (
                           <li key={index} className="flex items-start gap-2 text-sm text-zinc-400">
-                            <span className="text-cyan-500 mt-1">•</span>
+                            <span className="text-fuchsia-500 mt-1">•</span>
                             {topic}
                           </li>
                         ))}
@@ -265,8 +265,8 @@ export function RoadmapView({ onNavigateToArena }: RoadmapViewProps) {
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-zinc-800/50 rounded-lg border-l-2 border-cyan-500">
-                      <h4 className="text-sm font-semibold text-cyan-400 mb-2">Checkpoint</h4>
+                    <div className="p-4 bg-zinc-800/50 rounded-lg border-l-2 border-fuchsia-500">
+                      <h4 className="text-sm font-semibold text-fuchsia-400 mb-2">Checkpoint</h4>
                       <p className="text-sm text-zinc-400">{block.checkpoint}</p>
                     </div>
 
@@ -279,7 +279,7 @@ export function RoadmapView({ onNavigateToArena }: RoadmapViewProps) {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={onNavigateToArena}
-                      className="px-4 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
+                      className="px-4 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 transition-colors"
                     >
                       Starta övningar
                     </button>

@@ -29,7 +29,7 @@ interface CheatCategory {
 const cheatSheetData: CheatCategory[] = [
   {
     name: 'SELECT Grunderna',
-    icon: '📥',
+    icon: 'select',
     items: [
       {
         syntax: 'SELECT kolumn FROM tabell',
@@ -97,7 +97,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'WHERE Filtrering',
-    icon: '🔍',
+    icon: 'filter',
     items: [
       {
         syntax: 'WHERE villkor',
@@ -227,7 +227,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'Sortering & Paginering',
-    icon: '📊',
+    icon: 'sort',
     items: [
       {
         syntax: 'ORDER BY kolumn [ASC|DESC]',
@@ -294,7 +294,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'Aggregatfunktioner',
-    icon: '📈',
+    icon: 'aggregate',
     items: [
       {
         syntax: 'COUNT(*) / COUNT(kolumn)',
@@ -422,7 +422,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'JOINs',
-    icon: '🔗',
+    icon: 'join',
     items: [
       {
         syntax: 'INNER JOIN',
@@ -588,7 +588,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'Datatyper',
-    icon: '📦',
+    icon: 'subquery',
     items: [
       {
         syntax: 'INTEGER / INT',
@@ -714,7 +714,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'Constraints',
-    icon: '🔒',
+    icon: 'constraint',
     items: [
       {
         syntax: 'PRIMARY KEY',
@@ -857,7 +857,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'Index & Prestanda',
-    icon: '⚡',
+    icon: 'index',
     items: [
       {
         syntax: 'CREATE INDEX',
@@ -943,7 +943,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'DDL - Tabeller',
-    icon: '🏗️',
+    icon: 'ddl',
     items: [
       {
         syntax: 'CREATE TABLE',
@@ -1021,7 +1021,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'DML - Data',
-    icon: '✏️',
+    icon: 'dml',
     items: [
       {
         syntax: 'INSERT INTO',
@@ -1154,7 +1154,7 @@ const cheatSheetData: CheatCategory[] = [
   },
   {
     name: 'Normalformer',
-    icon: '📐',
+    icon: 'normal',
     items: [
       {
         syntax: '1NF - Första normalformen',
@@ -1337,7 +1337,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
           <div className="flex items-center gap-2 bg-zinc-800 rounded-lg p-1">
             <button
               onClick={() => setViewMode('read')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${viewMode === 'read' ? 'bg-cyan-500 text-white' : 'text-zinc-400 hover:text-white'
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${viewMode === 'read' ? 'bg-fuchsia-500 text-white' : 'text-zinc-400 hover:text-white'
                 }`}
             >
               📖 Läs
@@ -1376,7 +1376,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                   key={category.name}
                   onClick={() => setActiveCategory(category.name)}
                   className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all mb-1 ${activeCategory === category.name
-                      ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30'
+                      ? 'bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 border border-fuchsia-500/30'
                       : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200'
                     }`}
                 >
@@ -1402,7 +1402,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                     >
                       {/* Syntax header */}
                       <div className="flex items-start justify-between gap-4 mb-3">
-                        <code className="text-cyan-400 font-mono font-bold text-lg">
+                        <code className="text-fuchsia-400 font-mono font-bold text-lg">
                           {item.syntax}
                         </code>
                         <span className="text-zinc-400 text-sm bg-zinc-700/50 px-3 py-1 rounded-full whitespace-nowrap">
@@ -1448,7 +1448,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                   Kort {flashcardIndex + 1} av {allItems.length}
                 </span>
                 <span className="text-zinc-600 mx-2">•</span>
-                <span className="text-cyan-500 text-sm">{allItems[flashcardIndex].category}</span>
+                <span className="text-fuchsia-500 text-sm">{allItems[flashcardIndex].category}</span>
               </div>
 
               {/* Card */}
@@ -1524,7 +1524,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
 
               {/* Question */}
               <div className="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 mb-6">
-                <p className="text-cyan-500 text-sm mb-2 font-medium">{currentQuizItem.category}</p>
+                <p className="text-fuchsia-500 text-sm mb-2 font-medium">{currentQuizItem.category}</p>
                 <p className="text-white text-lg leading-relaxed">
                   {currentQuizItem.item.quizQ}
                 </p>
@@ -1538,7 +1538,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                   let className = 'w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3 ';
 
                   if (selectedAnswer === null) {
-                    className += 'bg-zinc-800/50 border-zinc-700 hover:border-cyan-500/50 hover:bg-zinc-800 text-zinc-300 cursor-pointer';
+                    className += 'bg-zinc-800/50 border-zinc-700 hover:border-fuchsia-500/50 hover:bg-zinc-800 text-zinc-300 cursor-pointer';
                   } else if (isCorrect) {
                     className += 'bg-green-500/20 border-green-500 text-green-300';
                   } else if (isSelected) {
@@ -1585,7 +1585,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                 <div className="flex justify-center mt-6">
                   <button
                     onClick={nextQuizQuestion}
-                    className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl hover:from-cyan-400 hover:to-blue-400 transition-all shadow-lg shadow-cyan-500/20"
+                    className="px-8 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-semibold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 transition-all shadow-lg shadow-fuchsia-500/20"
                   >
                     Nästa fråga →
                   </button>
