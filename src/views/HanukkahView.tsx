@@ -435,7 +435,7 @@ export function HanukkahView() {
                     {puzzle.answerType === 'phone' && (
                         <>
                             <div className="border border-zinc-700 rounded-lg overflow-hidden mb-3">
-                                <div className="h-48">
+                                <div className="h-96">
                                     <SqlEditor
                                         value={query}
                                         onChange={setQuery}
@@ -466,7 +466,7 @@ export function HanukkahView() {
 
                             {/* Results - scrollbar */}
                             {result && (
-                                <div className="border border-zinc-700 rounded-lg overflow-hidden flex-1" style={{ maxHeight: 'calc(100vh - 380px)' }}>
+                                <div className="border border-zinc-700 rounded-lg overflow-hidden flex-1" style={{ maxHeight: 'calc(100vh - 480px)', minHeight: '300px' }}>
                                     <div className="overflow-auto h-full">
                                         {result.error ? (
                                             <div className="p-3 text-red-400 text-sm">{result.error}</div>
