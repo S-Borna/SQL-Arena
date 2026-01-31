@@ -11,7 +11,7 @@ interface NavigationProps {
 
 const navItems: { id: ViewType; label: string; icon: string }[] = [
   { id: 'arena', label: 'Arena', icon: '⚡' },
-  { id: 'roadmap', label: 'Roadmap 72h', icon: '🗺' },
+  { id: 'roadmap', label: 'Roadmap', icon: '🗺' },
   { id: 'labs', label: 'Labs', icon: '🧪' },
   { id: 'design', label: 'Design Studio', icon: '📐' },
   { id: 'hanukkah', label: 'Hanukkah Mystery', icon: '🕎' }
