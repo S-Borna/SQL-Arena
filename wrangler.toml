@@ -2,3 +2,8 @@
 name = "sql-arena"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-01-31"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sql-arena-db"
+database_id = "24229b14-2aff-47b3-a7cb-f4e1179309ac"
