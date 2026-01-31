@@ -8,202 +8,214 @@ export function LandingPage({ onStart }: LandingPageProps) {
     const { user } = useAuth();
 
     return (
-        <div className="min-h-screen bg-[#050508] flex flex-col overflow-hidden">
-            {/* Background Effects */}
-            <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] animate-float" />
-                <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] animate-float" style={{ animationDelay: '2s' }} />
-                <div className="absolute bottom-[-10%] left-[30%] w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-float" style={{ animationDelay: '4s' }} />
-                <div className="absolute inset-0 bg-grid opacity-30" />
+        <div className="min-h-screen bg-[#0a0a0f] flex flex-col overflow-hidden">
+            {/* Background Gradient Effects */}
+            <div className="fixed inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-0 left-1/4 w-[800px] h-[600px] bg-gradient-to-br from-fuchsia-600/20 via-purple-600/15 to-transparent rounded-full blur-[120px]" />
+                <div className="absolute top-1/3 right-0 w-[600px] h-[500px] bg-gradient-to-bl from-rose-500/15 via-pink-600/10 to-transparent rounded-full blur-[100px]" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-gradient-to-tr from-violet-600/15 to-transparent rounded-full blur-[80px]" />
             </div>
 
             {/* Hero Section */}
-            <div className="relative flex-1 flex flex-col items-center justify-center px-4 py-16 z-10">
+            <div className="relative flex-1 flex flex-col items-center justify-center px-4 py-20 z-10">
                 <div className="text-center max-w-5xl mx-auto">
-                    {/* Animated Logo */}
-                    <div className="mb-8 flex items-center justify-center">
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-2xl opacity-30 animate-glow-pulse" />
-                            <div className="relative glass-card p-5 rounded-2xl">
-                                <svg viewBox="0 0 64 64" className="w-20 h-20 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" fill="currentColor">
-                                    <path d="M32 4C18.7 4 8 9.4 8 16v32c0 6.6 10.7 12 24 12s24-5.4 24-12V16c0-6.6-10.7-12-24-12zm0 4c11.6 0 20 4.5 20 8s-8.4 8-20 8-20-4.5-20-8 8.4-8 20-8zm20 40c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V48zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V36zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V24z" />
-                                </svg>
-                            </div>
-                        </div>
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-3 px-5 py-2.5 mb-10 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span className="text-zinc-300 text-sm font-medium">Gratis att använda</span>
+                        <span className="text-zinc-600">•</span>
+                        <span className="text-zinc-400 text-sm">Inget konto krävs</span>
                     </div>
 
-                    {/* Title with Gradient */}
-                    <h1 className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tight animate-slide-up-fade">
-                        SQL{' '}
-                        <span className="relative inline-block">
-                            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient">Arena</span>
-                            <span className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 blur-2xl opacity-30" />
+                    {/* Main Title */}
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
+                        <span className="text-white">LÄR DIG</span>
+                        <br />
+                        <span className="bg-gradient-to-r from-fuchsia-400 via-pink-500 to-rose-500 bg-clip-text text-transparent">
+                            SQL PÅ RIKTIGT
                         </span>
                     </h1>
 
-                    {/* Tagline */}
-                    <p className="text-2xl md:text-4xl text-white/80 font-light mb-4 tracking-wide animate-slide-up-fade" style={{ animationDelay: '0.1s' }}>
-                        Skriv. Kör. Lär dig.
+                    {/* Subtitle */}
+                    <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                        Praktisk träning med riktiga databaser och direkt feedback.
+                        <br className="hidden md:block" />
+                        Strukturerade övningar från grunden till avancerad nivå.
                     </p>
-
-                    <p className="text-lg text-zinc-400 mb-10 max-w-2xl mx-auto animate-slide-up-fade" style={{ animationDelay: '0.2s' }}>
-                        Praktisk SQL-träning med riktiga databaser och direkt feedback i webbläsaren.
-                    </p>
-
-                    {/* Free Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 mb-10 glass-card rounded-full border border-green-500/30 animate-slide-up-fade" style={{ animationDelay: '0.3s' }}>
-                        <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                        <span className="text-green-400 font-semibold text-sm">100% Gratis</span>
-                        <span className="text-zinc-500 text-sm">• Inget konto krävs</span>
-                    </div>
 
                     {/* CTA Button */}
-                    <div className="animate-slide-up-fade" style={{ animationDelay: '0.4s' }}>
-                        <button
-                            onClick={onStart}
-                            className="group relative px-10 py-5 text-white text-xl font-bold rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 active:scale-100"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 animate-gradient" />
-                            <div className="absolute inset-0 animate-shimmer" />
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 blur-xl" />
-                            <span className="relative flex items-center gap-3">
-                                {user ? 'Fortsätt träna' : 'Börja träna nu'}
-                                <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
+                    <button
+                        onClick={onStart}
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 text-white text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-100"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-600" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 via-pink-500 to-rose-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <span className="relative">{user ? 'Fortsätt träna' : 'Kom igång'}</span>
+                        <svg className="relative w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </button>
 
                     {/* Stats */}
-                    <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto animate-slide-up-fade" style={{ animationDelay: '0.5s' }}>
-                        <div className="stat-card glass-card rounded-2xl">
-                            <div className="stat-number">6</div>
-                            <div className="text-zinc-500 text-sm font-medium mt-1">Moduler</div>
+                    <div className="mt-20 flex flex-wrap justify-center gap-12 md:gap-16">
+                        <div className="text-center">
+                            <div className="text-4xl md:text-5xl font-bold text-white">70+</div>
+                            <div className="text-zinc-500 text-sm mt-1 font-medium">Övningar</div>
                         </div>
-                        <div className="stat-card glass-card rounded-2xl">
-                            <div className="stat-number">70+</div>
-                            <div className="text-zinc-500 text-sm font-medium mt-1">Övningar</div>
+                        <div className="text-center">
+                            <div className="text-4xl md:text-5xl font-bold text-white">6</div>
+                            <div className="text-zinc-500 text-sm mt-1 font-medium">Nivåer</div>
                         </div>
-                        <div className="stat-card glass-card rounded-2xl">
-                            <div className="stat-number">3</div>
-                            <div className="text-zinc-500 text-sm font-medium mt-1">Databaser</div>
+                        <div className="text-center">
+                            <div className="text-4xl md:text-5xl font-bold text-white">3</div>
+                            <div className="text-zinc-500 text-sm mt-1 font-medium">Databaser</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Features Section */}
-            <div className="relative z-10 py-20 px-4">
+            <div className="relative z-10 py-24 px-4">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                            Allt du behöver för att{' '}
-                            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">bemästra SQL</span>
+                            Allt på ett ställe
                         </h2>
-                        <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-                            Från grunden till avancerad nivå – strukturerat och praktiskt.
+                        <p className="text-zinc-400 text-lg max-w-xl mx-auto">
+                            Verktyg och övningar för att gå från nybörjare till avancerad.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Feature 1 */}
-                        <div className="group glass-card glass-card-hover p-6 cursor-pointer">
-                            <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/10 group-hover:scale-110 transition-transform duration-300">⚡</div>
-                            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">Arena - Träna SQL</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed">70+ övningar i 6 nivåer. SELECT, WHERE, ORDER BY, GROUP BY, JOINs och subqueries.</p>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                        {/* Feature 1 - Arena */}
+                        <div className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-fuchsia-500/30 hover:bg-white/[0.04] transition-all duration-300">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-fuchsia-600/5 flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-2">Arena</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed">70+ övningar i 6 nivåer. SELECT, WHERE, JOINs, GROUP BY och subqueries.</p>
                         </div>
 
-                        {/* Feature 2 */}
-                        <div className="group glass-card glass-card-hover p-6 cursor-pointer">
-                            <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 group-hover:scale-110 transition-transform duration-300">🗺️</div>
-                            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">Roadmap</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed">6 moduler med 14 delar som följer kursmålen. Strukturerad väg till VG.</p>
+                        {/* Feature 2 - Roadmap */}
+                        <div className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-pink-500/30 hover:bg-white/[0.04] transition-all duration-300">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-pink-600/5 flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-2">Roadmap</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed">Strukturerad inlärningsväg med 6 moduler som följer kursmålen.</p>
                         </div>
 
-                        {/* Feature 3 */}
-                        <div className="group glass-card glass-card-hover p-6 cursor-pointer">
-                            <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/10 group-hover:scale-110 transition-transform duration-300">🧪</div>
-                            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">Labs - Sandlåda</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed">Kör fria queries eller bygg egen databas. Exportera som .sql-fil.</p>
+                        {/* Feature 3 - Labs */}
+                        <div className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 hover:bg-white/[0.04] transition-all duration-300">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/20 to-rose-600/5 flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-2">Labs</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed">Fri sandlåda för egna queries. Bygg och exportera egna databaser.</p>
                         </div>
 
-                        {/* Feature 4 */}
-                        <div className="group glass-card glass-card-hover p-6 cursor-pointer">
-                            <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/10 group-hover:scale-110 transition-transform duration-300">📐</div>
-                            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">Design Studio</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed">Normaliseringsövningar: 1NF, 2NF, 3NF och Many-to-Many relationer.</p>
+                        {/* Feature 4 - Design Studio */}
+                        <div className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-violet-500/30 hover:bg-white/[0.04] transition-all duration-300">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-600/5 flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-2">Design Studio</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed">Normalisering: 1NF, 2NF, 3NF. Öva på databasdesign interaktivt.</p>
                         </div>
 
-                        {/* Feature 5 */}
-                        <div className="group glass-card glass-card-hover p-6 cursor-pointer">
-                            <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 group-hover:scale-110 transition-transform duration-300">🕎</div>
-                            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">Hanukkah Mystery</h3>
+                        {/* Feature 5 - Mystery */}
+                        <div className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-amber-500/30 hover:bg-white/[0.04] transition-all duration-300">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/5 flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-2">Mystery Challenge</h3>
                             <p className="text-zinc-400 text-sm leading-relaxed">8 mysterie-gåtor att lösa med SQL. Progressiv upplåsning.</p>
                         </div>
 
-                        {/* Feature 6 */}
-                        <div className="group glass-card glass-card-hover p-6 cursor-pointer">
-                            <div className="w-14 h-14 rounded-xl mb-4 flex items-center justify-center text-2xl bg-gradient-to-br from-green-500/20 to-green-600/10 group-hover:scale-110 transition-transform duration-300">📋</div>
-                            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-400 transition-colors">Cheat Sheet</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed">SQL-referens med 65+ koncept. Flashcards och quiz för att testa dig.</p>
+                        {/* Feature 6 - Cheat Sheet */}
+                        <div className="group p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/30 hover:bg-white/[0.04] transition-all duration-300">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/5 flex items-center justify-center mb-4">
+                                <svg className="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-white mb-2">Cheat Sheet</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed">Komplett SQL-referens med 65+ koncept. Flashcards och quiz.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Account Section */}
-            <div className="relative z-10 py-16 px-4">
+            {/* Account Benefits */}
+            <div className="relative z-10 py-20 px-4">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-white mb-8 text-center">Spara din progress</h2>
+                    <h2 className="text-2xl font-bold text-white mb-10 text-center">Spara din progress</h2>
                     <div className="grid md:grid-cols-2 gap-6">
-                        <div className="glass-card p-6">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center text-xl">🚀</div>
-                                <h3 className="text-white font-semibold">Utan konto</h3>
-                            </div>
-                            <ul className="text-zinc-400 text-sm space-y-2">
-                                <li className="flex items-center gap-2">
-                                    <svg className="w-4 h-4 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                        {/* Without Account */}
+                        <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                            <h3 className="text-white font-semibold mb-4 flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center">
+                                    <svg className="w-5 h-5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg>
+                                </div>
+                                Utan konto
+                            </h3>
+                            <ul className="text-zinc-400 text-sm space-y-3">
+                                <li className="flex items-center gap-3">
+                                    <svg className="w-4 h-4 text-zinc-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                                     Full tillgång till alla funktioner
                                 </li>
-                                <li className="flex items-center gap-2">
-                                    <svg className="w-4 h-4 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    Query sparas under sessionen
+                                <li className="flex items-center gap-3">
+                                    <svg className="w-4 h-4 text-zinc-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                    Progress sparas under sessionen
                                 </li>
-                                <li className="flex items-center gap-2 text-zinc-500">
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                                    Stänger du fliken börjar du om
+                                <li className="flex items-center gap-3 text-zinc-500">
+                                    <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                                    Försvinner när du stänger fliken
                                 </li>
                             </ul>
                         </div>
                         
-                        <div className="relative glass-card p-6 overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-2xl" />
-                            <div className="absolute inset-[1px] bg-[#0a0a0c] rounded-2xl" />
+                        {/* With Account */}
+                        <div className="relative p-6 rounded-2xl overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 via-pink-500/10 to-rose-500/10" />
+                            <div className="absolute inset-0 border border-fuchsia-500/20 rounded-2xl" />
                             <div className="relative">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-xl">⭐</div>
-                                    <div>
-                                        <h3 className="text-white font-semibold">Med konto</h3>
-                                        <span className="text-xs text-green-400 font-medium">Gratis!</span>
+                                <h3 className="text-white font-semibold mb-4 flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-fuchsia-500/20 to-pink-500/20 flex items-center justify-center">
+                                        <svg className="w-5 h-5 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                        </svg>
                                     </div>
-                                </div>
-                                <ul className="text-zinc-400 text-sm space-y-2">
-                                    <li className="flex items-center gap-2">
-                                        <svg className="w-4 h-4 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    Med konto
+                                    <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-medium">Gratis</span>
+                                </h3>
+                                <ul className="text-zinc-400 text-sm space-y-3">
+                                    <li className="flex items-center gap-3">
+                                        <svg className="w-4 h-4 text-fuchsia-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                                         Progress sparas permanent
                                     </li>
-                                    <li className="flex items-center gap-2">
-                                        <svg className="w-4 h-4 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    <li className="flex items-center gap-3">
+                                        <svg className="w-4 h-4 text-fuchsia-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                                         Fortsätt där du slutade
                                     </li>
-                                    <li className="flex items-center gap-2">
-                                        <svg className="w-4 h-4 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                        Se avklarade övningar
+                                    <li className="flex items-center gap-3">
+                                        <svg className="w-4 h-4 text-fuchsia-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                        Statistik över avklarade övningar
                                     </li>
                                 </ul>
                             </div>
@@ -212,36 +224,21 @@ export function LandingPage({ onStart }: LandingPageProps) {
                 </div>
             </div>
 
-            {/* Tech Stack */}
-            <div className="relative z-10 py-12 px-4 border-t border-white/5">
-                <div className="max-w-4xl mx-auto text-center">
-                    <p className="text-zinc-600 text-xs uppercase tracking-[0.2em] mb-8 font-medium">Powered by</p>
-                    <div className="flex flex-wrap justify-center items-center gap-10">
-                        <span className="text-zinc-600 text-sm font-medium transition-colors cursor-default hover:text-cyan-400">React</span>
-                        <span className="text-zinc-600 text-sm font-medium transition-colors cursor-default hover:text-blue-400">TypeScript</span>
-                        <span className="text-zinc-600 text-sm font-medium transition-colors cursor-default hover:text-purple-400">Vite</span>
-                        <span className="text-zinc-600 text-sm font-medium transition-colors cursor-default hover:text-teal-400">Tailwind</span>
-                        <span className="text-zinc-600 text-sm font-medium transition-colors cursor-default hover:text-orange-400">Cloudflare</span>
-                        <span className="text-zinc-600 text-sm font-medium transition-colors cursor-default hover:text-sky-400">sql.js</span>
-                    </div>
-                </div>
-            </div>
-
             {/* Footer */}
-            <footer className="relative z-10 border-t border-white/5 py-8 px-4">
+            <footer className="relative z-10 border-t border-white/[0.05] py-10 px-4">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                         <div className="flex items-center gap-3">
-                            <svg viewBox="0 0 64 64" className="w-7 h-7 text-cyan-400" fill="currentColor">
+                            <svg viewBox="0 0 64 64" className="w-6 h-6 text-fuchsia-400" fill="currentColor">
                                 <path d="M32 4C18.7 4 8 9.4 8 16v32c0 6.6 10.7 12 24 12s24-5.4 24-12V16c0-6.6-10.7-12-24-12zm0 4c11.6 0 20 4.5 20 8s-8.4 8-20 8-20-4.5-20-8 8.4-8 20-8zm20 40c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V48zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V36zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V24z" />
                             </svg>
                             <span className="text-white font-semibold">SQL Arena</span>
-                            <span className="text-zinc-700 text-sm">© 2026</span>
+                            <span className="text-zinc-600 text-sm">© 2026</span>
                         </div>
 
                         <p className="text-zinc-500 text-sm">
-                            Byggt med <span className="text-red-400">❤️</span> av{' '}
-                            <a href="https://saidborna.com" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">Said Borna</a>
+                            Skapad av{' '}
+                            <a href="https://saidborna.com" target="_blank" rel="noopener noreferrer" className="text-fuchsia-400 hover:text-fuchsia-300 transition-colors font-medium">Said Borna</a>
                         </p>
 
                         <a href="https://github.com/S-Borna/SQL-Arena" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors">
