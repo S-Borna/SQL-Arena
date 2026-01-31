@@ -1,270 +1,280 @@
-# 🗃️ SQL Quest - Den Definitiva SQL-resursen på Svenska
+# SQL Arena
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Website](https://img.shields.io/badge/Website-sql.saidborna.com-blue)](https://sql.saidborna.com)
+Träna SQL genom att skriva queries. Övningar, feedback, repeat.
 
-> **Gratis, open source SQL-utbildning på svenska. Från nybörjare till proffs på 7 dagar.**
-
-🌐 **Live:** [sql.saidborna.com](https://sql.saidborna.com)
+**Live:** <https://sql.saidborna.com>
 
 ---
 
-## 🎯 Varför SQL Quest?
+## Vad är det här?
 
-SQL är det mest eftertraktade verktyget för datahantering - men de flesta resurser är på engelska, fragmenterade, eller kostar pengar.
+SQL Arena är ett träningsverktyg för SQL. Det är inte en kurs med videos och långa textblock. Du får en uppgift, skriver din query, kör den, ser vad som blev fel, fixar det. Repeat.
 
-**SQL Quest ändrar det.**
-
-- ✅ **100% Gratis** - Inga dolda kostnader, inga prenumerationer
-- ✅ **Open Source** - Fork:a, förbättra, bidra
-- ✅ **Svenska** - Hela kursen på svenska
-- ✅ **Praktiskt** - 82+ interaktiva övningar med facit
-- ✅ **Modern** - SQL.js körs direkt i webbläsaren
-- ✅ **AI-hjälp** - Integrerad ChatGPT-assistent
-- ✅ **DevOps-fokus** - Bonus för Chas Academy DevOps-studenter
+Byggt för studenter som behöver lära sig SQL inför tentamen eller för den som vill fräscha upp sina kunskaper.
 
 ---
 
-## 📚 Kursöversikt
+## Features
 
-### Dag 1: Introduktion & SELECT
+### 🏟️ Arena
 
-- Vad är en databas? SQL vs NoSQL, ACID vs BASE
-- SELECT-satser, kolumner, *
-- 15 övningar
+Huvudläget. Här kör du övningar uppdelade i 6 nivåer:
 
-### Dag 2: Filtrera & Sortera
+1. **SELECT** - Grunderna. Hämta data, välja kolumner, DISTINCT.
+2. **WHERE** - Filtrering. Jämförelser, LIKE, IN, BETWEEN.
+3. **ORDER BY** - Sortering och LIMIT/OFFSET för paginering.
+4. **GROUP BY** - Aggregatfunktioner. COUNT, SUM, AVG, MAX, MIN + HAVING.
+5. **JOIN** - Koppla ihop tabeller. INNER JOIN, LEFT JOIN, multi-table joins.
+6. **Subqueries** - Nästlade queries, korrelerade subqueries, EXISTS.
 
-- WHERE, AND, OR, NOT
-- ORDER BY, LIMIT, OFFSET
-- LIKE, IN, BETWEEN
-- 15 övningar
+Varje nivå avslutas med en Boss Query som testar allt du lärt dig.
 
-### Dag 3: Aggregering
+70+ övningar totalt fördelade över tre databaser:
 
-- COUNT, SUM, AVG, MIN, MAX
-- GROUP BY & HAVING
-- NULL-hantering
-- 15 övningar
+- **E-commerce** - Produkter, kunder, ordrar, orderrader
+- **Chinook** - Musikdatabas med artister, album, spår, genrer
+- **Hanukkah of Data** - Mysterie-dataset där du löser gåtor med SQL
 
-### Dag 4: JOINs
+### 💡 Ledtrådar & Facit
 
-- INNER JOIN, LEFT JOIN, RIGHT JOIN
-- Multiple JOINs
-- Self-joins
-- 10 övningar
+Varje övning har:
 
-### Dag 5: Modifiera Data
+- **Ledtrådar** - Tips som hjälper utan att ge bort svaret
+- **Facit** - Fullständig exempellösning om du kör fast
 
-- CREATE TABLE, PRIMARY KEY, FOREIGN KEY
-- INSERT, UPDATE, DELETE
-- DROP TABLE
-- 10 övningar
+### 📋 Schema-panel
 
-### Dag 6: Normalisering
+Visar tabellstrukturen för aktiv databas. Tabellnamn, kolumner och datatyper. Så du slipper gissa vad saker heter.
 
-- 1NF, 2NF, 3NF
-- Denormalisering
-- Databasdesign
-- 7 övningar
+### 🧪 Labs
 
-### Dag 7: Avancerat
+Två lägen:
 
-- Subqueries
-- Views
-- Transactions (ACID)
-- Python + SQLite integration
-- 10 övningar
+**Sandbox** - Fri lek. Kör vilka queries du vill mot befintliga databaser. Perfekt för att experimentera. Reset-knapp om du förstör något.
+
+**Bygg Databas** - Skapa din egen databas från scratch med CREATE TABLE, INSERT osv. Dina tabeller visas i sidopanelen.
+
+**Export** - Ladda ner din databas som .sql-fil i SQLite, MySQL eller PostgreSQL-format.
+
+### 📐 Design Studio
+
+Normaliseringsövningar för databasdesign:
+
+- **1NF** - Atomära värden, inga upprepande grupper
+- **2NF** - Eliminera partiella beroenden
+- **3NF** - Eliminera transitiva beroenden
+- **Many-to-Many** - Kopplings-tabeller
+
+Du bygger tabeller visuellt med kolumner, PK och FK. Sen validerar systemet din design.
+
+### 📚 CheatSheet
+
+SQL-referens i tre lägen:
+
+- **Läs** - Bläddra genom 14 kategorier med 65+ SQL-koncept
+- **Flashcards** - Vänd kort och testa dig själv
+- **Quiz** - Flervalsfrågor med fyra alternativ
+
+Täcker allt från SELECT till window functions, CTEs och transaktioner.
+
+### 🗺️ Roadmap
+
+Studieplan med checkpoints. Mappar övningar mot kursmål. Håller koll på vad du gjort och vad som återstår.
+
+### 🔥 Hanukkah of Data
+
+Speciell sektion med mystery-dataset. 8 gåtor (ljus) att lösa med SQL. Kräver att du kombinerar det du lärt dig för att hitta ledtrådar i datan.
 
 ---
 
-## 🛠️ DevOps Bonusinnehåll
+## Tech Stack
 
-Speciellt för Chas Academy DevOps-studenter:
+| Vad | Teknik |
+|-----|--------|
+| Frontend | React 19 + TypeScript |
+| Styling | Tailwind CSS 4 |
+| Bundler | Vite 7 |
+| SQL Engine | sql.js (SQLite kompilerat till WebAssembly) |
+| Editor | CodeMirror 6 med SQL-syntax |
+| Hosting | Cloudflare Pages |
+| Auth | Cloudflare D1 (SQLite) |
 
-- **💾 Backup & Recovery** - 3-2-1 regel, mysqldump, pg_dump
-- **🔐 Säkerhet** - SQL injection, GRANT/REVOKE, kryptering
-- **📊 Monitoring** - Slow query log, EXPLAIN ANALYZE, metrics
-- **🤖 Automation** - Migrations, CI/CD, Docker, Terraform
-- **🔄 Replikering** - Primary-Replica, failover
-- **☁️ Cloud** - AWS RDS, Azure SQL, GCP Cloud SQL, Supabase
+Allt körs i browsern. Ingen backend för SQL-exekveringen - sql.js kör SQLite direkt i WebAssembly. Databasen laddas in i minnet och queries körs lokalt.
 
 ---
 
-## 🚀 Kom igång
+## Projektstruktur
 
-### Använd online (rekommenderat)
+```
+src/
+├── components/          # UI-komponenter
+│   ├── CheatSheet.tsx   # SQL-referens med flashcards & quiz
+│   ├── Navigation.tsx   # Top bar navigation
+│   ├── SqlEditor.tsx    # CodeMirror wrapper
+│   ├── ResultsTable.tsx # Query-resultat tabell
+│   └── DiagnosticsPanel.tsx
+│
+├── views/               # Sidor/lägen
+│   ├── ArenaView.tsx    # Huvudövningsläget
+│   ├── LabsView.tsx     # Sandbox, bygg DB, lär dig SQL
+│   ├── DesignStudioView.tsx # Normaliseringsövningar
+│   ├── HanukkahView.tsx # Mystery-gåtor
+│   ├── RoadmapView.tsx  # Studieplan
+│   └── LandingPage.tsx  # Startsida
+│
+├── engine/              # SQL-logik
+│   ├── sqlRunner.ts     # Exekverar queries via sql.js
+│   └── coachEngine.ts   # Validerar svar, ger diagnostik
+│
+├── data/                # Övningar & seed-data
+│   ├── exercises.ts     # 70+ övningar med lösningar
+│   ├── courseGoals.ts   # Kursmålsmapping
+│   └── seeds/           # SQL-filer för databaser
+│       ├── ecommerce.sql
+│       ├── chinook.sql
+│       ├── hanukkah.sql
+│       └── school.sql
+│
+├── auth/                # Autentisering
+│   ├── AuthContext.tsx  # React context för login
+│   ├── AuthModal.tsx    # Login/signup modal
+│   └── UserMenu.tsx     # Användarmeny
+│
+├── state/               # Global state
+│   └── EditorState.tsx  # Sparar query mellan vyer
+│
+└── types/               # TypeScript-typer
+    └── index.ts
+```
 
-Besök [sql.saidborna.com](https://sql.saidborna.com)
+---
 
-### Kör lokalt
+## Databaser
+
+### E-commerce
+
+```
+customers (customer_id, customer_name, email, city)
+products (product_id, product_name, category, price, stock_quantity)
+orders (order_id, customer_id, order_date, status)
+order_items (order_item_id, order_id, product_id, quantity, unit_price)
+```
+
+### Chinook
+
+```
+artists (ArtistId, Name)
+albums (AlbumId, Title, ArtistId)
+tracks (TrackId, Name, AlbumId, GenreId, Milliseconds, UnitPrice)
+genres (GenreId, Name)
++ fler tabeller för playlists, invoices, employees
+```
+
+### Hanukkah of Data
+
+```
+customers (customer_id, name, phone, address, city, zip_code, birthdate)
+products (product_id, product_name, wholesale_cost, retail_price)
+orders (order_id, customer_id, order_date, order_time)
+order_items (order_id, product_id, qty, unit_price)
+```
+
+---
+
+## Köra lokalt
 
 ```bash
 # Klona
-git clone https://github.com/saidborna/sql-quest.git
-cd sql-quest
+git clone <repo>
+cd sql-arena
 
-# Starta server
-python3 -m http.server 8080
+# Installera dependencies
+npm install
 
-# Öppna i webbläsaren
-open http://localhost:8080
+# Starta dev server
+npm run dev
 ```
 
 ---
 
-## 🏗️ Teknisk Stack
+## Övningsformat
 
-| Teknologi | Användning |
-|-----------|------------|
-| **SQL.js 1.8.0** | SQLite kompilerad till WebAssembly |
-| **Vanilla JS** | Inga frameworks, snabb laddning |
-| **OpenAI API** | Valfri AI-assistent (GPT-4o-mini) |
-| **localStorage** | Sparar progress lokalt |
-| **Supabase** | Valfri cloud-backup (PostgreSQL) |
+Varje övning i `exercises.ts` ser ut så här:
 
----
-
-## 📁 Projektstruktur
-
-```
-sql-quest/
-├── index.html                  # Huvudapplikation (allt-i-ett)
-├── CNAME                       # Custom domain för GitHub Pages
-├── DEPLOY.md                   # Deployment-guide
-├── README.md                   # Du läser denna fil
-├── js/
-│   ├── theory.js               # Komplett teori (7 dagar, ~1200 rader)
-│   ├── exercises-complete.js   # 82 övningar med validering
-│   ├── solutions-complete.js   # Detaljerade lösningar med förklaringar
-│   └── devops-content.js       # DevOps-bonus (6 moduler)
-└── css/
-    └── style.css               # Extra styles (optional)
+```typescript
+{
+  id: 'where-005',
+  level: 2,
+  category: 'where',
+  title: 'Flera kategorier',
+  brief: 'Visa produkter som är Electronics eller Books.',
+  database: 'ecommerce',
+  expectedColumns: ['product_name', 'category'],
+  hints: [
+    'Använd IN för att matcha flera värden',
+    'IN tar en lista med värden inom parenteser'
+  ],
+  solution: "SELECT product_name, category FROM products WHERE category IN ('Electronics', 'Books')",
+  courseGoals: [1],
+  difficulty: 'intermediate'
+}
 ```
 
----
+Validering sker genom att jämföra:
 
-## 🎮 Funktioner
-
-### Interaktiv SQL Editor
-
-- Skriv och kör SQL direkt i webbläsaren
-- Ctrl+Enter för snabbkörning
-- Syntax highlighting
-- Resultat visas i tabell
-
-### Gamification
-
-- 🔥 Tänd ljus för varje klarad dag
-- Progressbar visar framsteg
-- Svårighetsgrader: Easy/Medium/Hard
-
-### Hjälpsystem
-
-- 💡 **Ledtrådar** - Hints utan att avslöja svaret
-- 📖 **Lösningar** - Detaljerade steg-för-steg förklaringar
-- 🤖 **AI-assistent** - ChatGPT-integration
-
-### Databas-schema
-
-Svenska tabeller för realistisk övning:
-
-- `produkter` - Produktkatalog
-- `kunder` - Kundregister
-- `ordrar` - Orderhistorik
-- `orderrader` - Orderprodukter
-- `anstalda` - Personalregister
-- `kategorier` - Produktkategorier
+- Kolumnnamn i resultatet
+- Antal rader (om specificerat)
+- Att query kör utan fel
 
 ---
 
-## 🤖 AI-Assistent Setup
+## Coach Engine
 
-1. Gå till [platform.openai.com](https://platform.openai.com/api-keys)
-2. Skapa API-nyckel
-3. Klistra in i Inställningar (⚙️)
-4. Chatta med AI för hjälp!
+Diagnostik-motorn i `coachEngine.ts` ger feedback utan att använda AI. Den kollar:
 
----
+- Saknade kolumner
+- Fel kolumnordning
+- Fel antal rader
+- Syntax-fel (parsas av sql.js)
+- Vanliga misstag (GROUP BY utan aggregat, JOIN utan ON, etc.)
 
-## 🌐 Deployment
-
-Se [DEPLOY.md](DEPLOY.md) för fullständiga instruktioner:
-
-- **GitHub Pages** (gratis, rekommenderat)
-- **Vercel** (gratis)
-- **Netlify** (gratis)
-
-Custom domain: `sql.saidborna.com`
+Feedbacken är kort och konkret: vad som är fel + en riktning för fix.
 
 ---
 
-## 🤝 Bidra
+## Konto & Progress
 
-Pull requests välkomnas!
+Sidan fungerar helt utan inloggning - alla funktioner är tillgängliga direkt.
 
-```bash
-# 1. Fork projektet på GitHub
+**Utan konto:**
 
-# 2. Klona din fork
-git clone https://github.com/DITT-NAMN/sql-quest.git
+- Full tillgång till allt
+- Queries sparas under sessionen
+- Stänger du fliken försvinner allt
 
-# 3. Skapa feature branch
-git checkout -b feature/ny-ovning
+**Med konto (gratis):**
 
-# 4. Gör ändringar och commita
-git commit -m "Lägg till ny övning"
+- Avklarade övningar sparas permanent
+- Fortsätt där du slutade nästa gång
 
-# 5. Pusha
-git push origin feature/ny-ovning
+**Viktigt att veta:**
 
-# 6. Öppna Pull Request på GitHub
-```
-
-### Idéer för bidrag
-
-- Fler övningar
-- Bättre förklaringar
-- Nya DevOps-moduler
-- Buggfixar
-- Översättningar
+- 🧪 Egna databaser i Labs försvinner om du inte exporterar dem som .sql-fil
 
 ---
 
-## 📜 Licens
+## Begränsningar
 
-MIT License - Gör vad du vill med koden!
-
-```
-MIT License
-Copyright (c) 2024 Said Borna
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software...
-```
+- sql.js stödjer SQLite-syntax, inte MySQL/PostgreSQL-specifik syntax
+- Kräver JavaScript aktiverat
+- Fungerar bäst på desktop (responsivt men optimerat för större skärm)
 
 ---
 
-## 🙏 Erkännanden
+## Licens
 
-- **Chas Academy** - DevOps-utbildning
-- **IBM/Coursera** - Kursstruktur inspiration
-- **SQL.js** - WebAssembly SQLite
-- **OpenAI** - AI-assistent
+MIT
 
 ---
 
-## 📞 Kontakt
-
-- **Website:** [saidborna.com](https://saidborna.com)
-- **GitHub:** [@saidborna](https://github.com/saidborna)
-
----
-
-<p align="center">
-  <strong>⭐ Stjärnmärk detta repo om det hjälpte dig!</strong><br><br>
-  <em>Gjort med ❤️ i Sverige</em><br><br>
-  <img src="https://img.shields.io/badge/Made%20with-Love-red" alt="Made with love">
-</p>
+Designat och byggt med ❤️ för DevOps Ingenjörer av **Said Borna**
