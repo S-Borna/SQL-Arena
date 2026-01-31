@@ -293,15 +293,14 @@ export function HanukkahView() {
                     key={index}
                     onClick={() => selectPuzzle(index)}
                     disabled={!isUnlocked}
-                    className={`flex flex-col items-center transition-all ${isUnlocked ? 'cursor-pointer hover:scale-110' : 'cursor-not-allowed opacity-50'
+                    className={`flex items-center gap-1 px-1 py-0.5 rounded transition-all ${isCurrent ? 'bg-amber-500/20' : ''} ${isUnlocked ? 'cursor-pointer hover:bg-zinc-700' : 'cursor-not-allowed opacity-50'
                         }`}
-                    title={isUnlocked ? p.title : '🔒 Lås upp genom att lösa föregående'}
+                    title={isUnlocked ? p.title : '🔒'}
                 >
-                    <div className={`text-3xl ${isCompleted ? 'animate-pulse' : ''}`}>
+                    <span className="text-lg">
                         {isCompleted ? '🕯️' : isUnlocked ? '🪔' : '🔒'}
-                    </div>
-                    <span className={`text-xs mt-1 ${isCurrent ? 'text-yellow-400 font-bold' : 'text-zinc-500'
-                        }`}>
+                    </span>
+                    <span className={`text-xs ${isCurrent ? 'text-yellow-400 font-bold' : 'text-zinc-500'}`}>
                         {index}
                     </span>
                 </button>
@@ -309,39 +308,24 @@ export function HanukkahView() {
         };
 
         return (
-            <div className="flex flex-col items-center gap-4 p-4 overflow-x-auto">
-                <h3 className="text-amber-400 font-semibold text-sm">🕎 Hanukkia</h3>
+            <div className="flex flex-col items-center gap-1 p-2 h-full overflow-auto">
+                <h3 className="text-amber-400 font-semibold text-xs">🕎</h3>
 
-                {/* Main candles row */}
-                <div className="flex items-end gap-1 min-w-max">
-                    {/* Left 4 candles */}
-                    <div className="flex gap-1">
-                        {leftCandles.map(renderCandle)}
-                    </div>
-
-                    {/* Shamash (elevated) */}
-                    <div className="flex flex-col items-center -mt-4 mx-1">
-                        <div className={`text-4xl ${completedPuzzles.length === 9 ? 'animate-bounce' : ''}`}>
-                            {completedPuzzles.length === 9 ? '🌟' : '🕯️'}
-                        </div>
-                        <span className="text-xs text-amber-400">Shamash</span>
-                    </div>
-
-                    {/* Right 4 candles */}
-                    <div className="flex gap-1">
-                        {rightCandles.map(renderCandle)}
+                {/* Shamash at top */}
+                <div className="flex flex-col items-center">
+                    <div className={`text-2xl ${completedPuzzles.length === 9 ? 'animate-bounce' : ''}`}>
+                        {completedPuzzles.length === 9 ? '🌟' : '🕯️'}
                     </div>
                 </div>
 
-                {/* Bottom row: Collector + Epilogue */}
-                <div className="flex gap-4 mt-2">
-                    {renderCandle(collector)}
-                    {renderCandle(epilogue)}
+                {/* Vertical candles */}
+                <div className="flex flex-col gap-0.5">
+                    {[...leftCandles, ...rightCandles, collector, epilogue].map(renderCandle)}
                 </div>
 
                 {/* Progress */}
-                <div className="text-xs text-zinc-500">
-                    {completedPuzzles.length}/9 ljus tända
+                <div className="text-xs text-zinc-500 mt-1">
+                    {completedPuzzles.length}/9
                 </div>
             </div>
         );
@@ -371,156 +355,160 @@ export function HanukkahView() {
                 </div>
             </div>
 
-            {/* Middle: Puzzle selector */}
-            <div className="w-64 border-r border-zinc-800 flex flex-col bg-zinc-900/30">
+            {/* Middle: Puzzle selector - smalare */}
+            <div className="w-20 border-r border-zinc-800 flex flex-col bg-zinc-900/30">
                 {renderPuzzleSelector()}
             </div>
 
-            {/* Right: Main content */}
-            <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Story section */}
-                <div className="flex-1 overflow-auto p-6 bg-gradient-to-b from-zinc-900 to-zinc-950">
-                    <div className="max-w-3xl mx-auto">
+            {/* Story - vänster */}
+            <div className="w-1/2 border-r border-zinc-800 flex flex-col overflow-hidden">
+                <div className="flex-1 overflow-auto p-4 bg-gradient-to-b from-zinc-900 to-zinc-950">
+                    <div className="max-w-xl">
                         {/* Title */}
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="text-3xl">{completedPuzzles.includes(currentPuzzle) ? '🕯️' : '🪔'}</span>
-                            <h1 className="text-2xl font-bold text-amber-400">
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="text-2xl">{completedPuzzles.includes(currentPuzzle) ? '🕯️' : '🪔'}</span>
+                            <h1 className="text-xl font-bold text-amber-400">
                                 {currentPuzzle}. {puzzle.title}
                             </h1>
                             {completedPuzzles.includes(currentPuzzle) && (
-                                <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">✓ Löst</span>
+                                <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">✓</span>
                             )}
                         </div>
 
-                        {/* Story - Yellow/gold text like original */}
-                        <div className="prose prose-invert max-w-none mb-6">
-                            <div className="text-amber-100/90 leading-relaxed whitespace-pre-line text-sm">
-                                {puzzle.story}
-                            </div>
+                        {/* Story */}
+                        <div className="text-amber-100/90 leading-relaxed whitespace-pre-line text-sm mb-4">
+                            {puzzle.story}
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        {/* Question */}
-                        {puzzle.question && (
-                            <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-4">
-                                <p className="text-amber-300 font-medium">
-                                    ❓ {puzzle.question}
+            {/* Right: Question + Editor + Results */}
+            <div className="flex-1 flex flex-col overflow-hidden">
+                <div className="flex-1 overflow-auto p-4 bg-zinc-950">
+                    {/* Question */}
+                    {puzzle.question && (
+                        <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3 mb-3">
+                            <p className="text-amber-300 font-medium text-sm">
+                                ❓ {puzzle.question}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Hint */}
+                    {puzzle.hint && (
+                        <div className="bg-zinc-800/50 border border-zinc-700 rounded-lg p-3 mb-3">
+                            <button
+                                onClick={() => setShowHint(!showHint)}
+                                className="flex items-center gap-2 text-yellow-400 font-medium text-sm"
+                            >
+                                💡 Ledtråd {showHint ? '▼' : '▶'}
+                            </button>
+                            {showHint && (
+                                <p className="text-yellow-200/80 text-sm mt-2">
+                                    {puzzle.hint}
                                 </p>
-                            </div>
-                        )}
+                            )}
+                        </div>
+                    )}
 
-                        {/* Hint - Always visible */}
-                        {puzzle.hint && (
-                            <div className="bg-zinc-800/50 border border-zinc-700 rounded-lg p-4 mb-4">
+                    {/* For puzzle 0: text input */}
+                    {puzzle.answerType === 'text' && (
+                        <div className="flex gap-3 mb-4">
+                            <input
+                                type="text"
+                                value={textAnswer}
+                                onChange={(e) => setTextAnswer(e.target.value)}
+                                placeholder="Skriv lösenordet..."
+                                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white"
+                            />
+                            <button
+                                onClick={handleSubmitAnswer}
+                                className="px-6 py-2 bg-amber-500 text-zinc-950 font-semibold rounded-lg hover:bg-amber-400"
+                            >
+                                Kontrollera
+                            </button>
+                        </div>
+                    )}
+
+                    {/* For phone puzzles: SQL editor */}
+                    {puzzle.answerType === 'phone' && (
+                        <>
+                            <div className="border border-zinc-700 rounded-lg overflow-hidden mb-3">
+                                <div className="h-48">
+                                    <SqlEditor
+                                        value={query}
+                                        onChange={setQuery}
+                                        onExecute={handleExecute}
+                                        placeholder="Skriv din SQL-fråga här..."
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex gap-3 mb-3">
                                 <button
-                                    onClick={() => setShowHint(!showHint)}
-                                    className="flex items-center gap-2 text-yellow-400 font-medium text-sm mb-2"
+                                    onClick={handleExecute}
+                                    disabled={isLoading || !query.trim()}
+                                    className="flex-1 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400 disabled:opacity-50"
                                 >
-                                    💡 Ledtråd {showHint ? '▼' : '▶'}
+                                    {isLoading ? 'Kör...' : 'Kör SQL'}
                                 </button>
-                                {showHint && (
-                                    <p className="text-yellow-200/80 text-sm pl-6">
-                                        {puzzle.hint}
-                                    </p>
+
+                                {!completedPuzzles.includes(currentPuzzle) && result && !result.error && (
+                                    <button
+                                        onClick={markComplete}
+                                        className="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 text-sm"
+                                    >
+                                        ✓ Hittade svaret!
+                                    </button>
                                 )}
                             </div>
-                        )}
 
-                        {/* For puzzle 0: text input */}
-                        {puzzle.answerType === 'text' && (
-                            <div className="flex gap-3 mb-4">
-                                <input
-                                    type="text"
-                                    value={textAnswer}
-                                    onChange={(e) => setTextAnswer(e.target.value)}
-                                    placeholder="Skriv lösenordet..."
-                                    className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-2 text-white"
-                                />
-                                <button
-                                    onClick={handleSubmitAnswer}
-                                    className="px-6 py-2 bg-amber-500 text-zinc-950 font-semibold rounded-lg hover:bg-amber-400"
-                                >
-                                    Kontrollera
-                                </button>
-                            </div>
-                        )}
-
-                        {/* For phone puzzles: SQL editor */}
-                        {puzzle.answerType === 'phone' && (
-                            <>
-                                <div className="border border-zinc-700 rounded-lg overflow-hidden mb-3">
-                                    <div className="h-32">
-                                        <SqlEditor
-                                            value={query}
-                                            onChange={setQuery}
-                                            onExecute={handleExecute}
-                                            placeholder="Skriv din SQL-fråga här..."
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-3 mb-4">
-                                    <button
-                                        onClick={handleExecute}
-                                        disabled={isLoading || !query.trim()}
-                                        className="flex-1 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400 disabled:opacity-50"
-                                    >
-                                        {isLoading ? 'Kör...' : 'Kör SQL'}
-                                    </button>
-
-                                    {!completedPuzzles.includes(currentPuzzle) && result && !result.error && (
-                                        <button
-                                            onClick={markComplete}
-                                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500"
-                                        >
-                                            ✓ Jag hittade svaret!
-                                        </button>
-                                    )}
-                                </div>
-
-                                {/* Results */}
-                                {result && (
-                                    <div className="border border-zinc-700 rounded-lg overflow-hidden max-h-48 overflow-auto">
+                            {/* Results - scrollbar */}
+                            {result && (
+                                <div className="border border-zinc-700 rounded-lg overflow-hidden flex-1" style={{ maxHeight: 'calc(100vh - 380px)' }}>
+                                    <div className="overflow-auto h-full">
                                         {result.error ? (
                                             <div className="p-3 text-red-400 text-sm">{result.error}</div>
                                         ) : (
                                             <ResultsTable result={result} isLoading={isLoading} />
                                         )}
                                     </div>
-                                )}
-                            </>
-                        )}
+                                </div>
+                            )}
+                        </>
+                    )}
 
-                        {/* Epilogue - no input needed */}
-                        {puzzle.answerType === 'none' && currentPuzzle === 9 && (
-                            <div className="text-center py-8">
-                                <div className="text-6xl mb-4">🎉</div>
-                                <h2 className="text-2xl font-bold text-amber-400 mb-2">Grattis!</h2>
-                                <p className="text-zinc-400">Du har löst alla mysterier och hittat Noahs matta!</p>
-                            </div>
-                        )}
+                    {/* Epilogue */}
+                    {puzzle.answerType === 'none' && currentPuzzle === 9 && (
+                        <div className="text-center py-8">
+                            <div className="text-6xl mb-4">🎉</div>
+                            <h2 className="text-2xl font-bold text-amber-400 mb-2">Grattis!</h2>
+                            <p className="text-zinc-400">Du har löst alla mysterier och hittat Noahs matta!</p>
+                        </div>
+                    )}
 
-                        {/* Feedback */}
-                        {feedback && (
-                            <div className={`mt-4 p-3 rounded-lg ${feedback.includes('Korrekt') || feedback.includes('✓')
-                                ? 'bg-green-500/20 text-green-400'
-                                : 'bg-red-500/20 text-red-400'
-                                }`}>
-                                {feedback}
-                            </div>
-                        )}
+                    {/* Feedback */}
+                    {feedback && (
+                        <div className={`mt-3 p-3 rounded-lg text-sm ${feedback.includes('Korrekt') || feedback.includes('✓')
+                            ? 'bg-green-500/20 text-green-400'
+                            : 'bg-red-500/20 text-red-400'
+                            }`}>
+                            {feedback}
+                        </div>
+                    )}
 
-                        {/* Next button */}
-                        {completedPuzzles.includes(currentPuzzle) && currentPuzzle < 9 && (
-                            <div className="mt-4">
-                                <button
-                                    onClick={() => selectPuzzle(currentPuzzle + 1)}
-                                    className="px-6 py-2 bg-amber-500 text-zinc-950 font-semibold rounded-lg hover:bg-amber-400"
-                                >
-                                    Nästa ljus →
-                                </button>
-                            </div>
-                        )}
-                    </div>
+                    {/* Next button */}
+                    {completedPuzzles.includes(currentPuzzle) && currentPuzzle < 9 && (
+                        <div className="mt-3">
+                            <button
+                                onClick={() => selectPuzzle(currentPuzzle + 1)}
+                                className="px-4 py-2 bg-amber-500 text-zinc-950 font-semibold rounded-lg hover:bg-amber-400 text-sm"
+                            >
+                                Nästa ljus →
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
