@@ -1,8 +1,64 @@
 {
-  "hash": "649790e1",
-  "configHash": "03d842ce",
-  "lockfileHash": "e3b0c442",
-  "browserHash": "8099d8d2",
-  "optimized": {},
-  "chunks": {}
+  "hash": "05f4f1a6",
+  "configHash": "32f502ca",
+  "lockfileHash": "3fe8ee69",
+  "browserHash": "ccf78d8e",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "1225250a",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "a11e7ea5",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "fc170bc0",
+      "needsInterop": true
+    },
+    "sql.js": {
+      "src": "../../node_modules/sql.js/dist/sql-wasm.js",
+      "file": "sql__js.js",
+      "fileHash": "0e7fa584",
+      "needsInterop": true
+    },
+    "@uiw/react-codemirror": {
+      "src": "../../node_modules/@uiw/react-codemirror/esm/index.js",
+      "file": "@uiw_react-codemirror.js",
+      "fileHash": "ee880018",
+      "needsInterop": false
+    },
+    "@codemirror/lang-sql": {
+      "src": "../../node_modules/@codemirror/lang-sql/dist/index.js",
+      "file": "@codemirror_lang-sql.js",
+      "fileHash": "409f7ecd",
+      "needsInterop": false
+    },
+    "@codemirror/view": {
+      "src": "../../node_modules/@codemirror/view/dist/index.js",
+      "file": "@codemirror_view.js",
+      "fileHash": "8b16bd52",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-NO6UH6X3": {
+      "file": "chunk-NO6UH6X3.js"
+    },
+    "chunk-LLQJWYTA": {
+      "file": "chunk-LLQJWYTA.js"
+    },
+    "chunk-YQS3J3MM": {
+      "file": "chunk-YQS3J3MM.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
 }
