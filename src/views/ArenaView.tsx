@@ -166,7 +166,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             <select
               value={currentDatabase}
               onChange={(e) => onDatabaseChange(e.target.value as DatabaseType)}
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-cyan-500/50 transition-colors"
+              className="bg-zinc-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-fuchsia-500/50 transition-colors [&>option]:bg-zinc-900 [&>option]:text-white"
             >
               <option value="ecommerce">E-commerce</option>
               <option value="chinook">Chinook (Musik)</option>
@@ -176,11 +176,11 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             <button
               onClick={() => setShowSchema(!showSchema)}
               className={`px-4 py-2.5 text-sm font-medium rounded-xl transition-all ${showSchema
-                ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                ? 'bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50'
                 : 'glass-card text-zinc-400 hover:text-white hover:border-white/20'
                 }`}
             >
-              📋 Schema
+              Schema
             </button>
           </div>
 
@@ -193,7 +193,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
               ←
             </button>
             <span className="px-3 py-2 glass-card rounded-xl text-zinc-300">
-              <span className="text-cyan-400 font-bold">{currentIndex + 1}</span>
+              <span className="text-fuchsia-400 font-bold">{currentIndex + 1}</span>
               <span className="text-zinc-500"> / {exercises.length}</span>
             </span>
             <button
@@ -217,8 +217,8 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             <div className="flex-1 overflow-auto p-4">
               {schemaInfo.tables.map(table => (
                 <div key={table} className="mb-5">
-                  <h4 className="text-cyan-400 font-mono text-sm font-bold mb-2">{table}</h4>
-                  <div className="space-y-1 pl-3 border-l-2 border-cyan-500/30">
+                  <h4 className="text-fuchsia-400 font-mono text-sm font-bold mb-2">{table}</h4>
+                  <div className="space-y-1 pl-3 border-l-2 border-fuchsia-500/30">
                     {schemaInfo.columns[table]?.map(col => (
                       <div key={col.name} className="flex justify-between text-xs">
                         <span className="text-zinc-300 font-mono">{col.name}</span>
@@ -240,7 +240,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
               <div className="max-w-4xl">
                 {/* Category tag */}
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1.5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 text-xs font-bold rounded-full uppercase tracking-wide border border-cyan-500/30">
+                  <span className="px-3 py-1.5 bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 text-xs font-bold rounded-full uppercase tracking-wide border border-fuchsia-500/30">
                     {categoryNames[currentExercise.category] || currentExercise.category}
                   </span>
                   {currentExercise.difficulty === 'boss' && (
@@ -269,14 +269,14 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
                       : 'glass-card text-zinc-400 hover:text-amber-400 hover:border-amber-500/30'
                       }`}
                   >
-                    💡 Ledtråd
+                    Ledtråd
                   </button>
 
                   <button
                     onClick={() => setShowAnswerConfirm(true)}
                     className="px-4 py-2.5 text-sm font-medium glass-card text-zinc-400 rounded-xl hover:text-white hover:border-white/20 transition-all"
                   >
-                    📝 Visa facit
+                    Visa facit
                   </button>
                 </div>
 
@@ -324,7 +324,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
                   <button
                     onClick={handleExecute}
                     disabled={isLoading || !query.trim()}
-                    className="flex-1 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:from-cyan-400 hover:to-blue-400 disabled:opacity-50 transition-all shadow-lg shadow-cyan-500/20"
+                    className="flex-1 py-3.5 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 disabled:opacity-50 transition-all shadow-lg shadow-fuchsia-500/20"
                   >
                     {isLoading ? 'Kör...' : '▶ Kör (Ctrl+Enter)'}
                   </button>
@@ -387,7 +387,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             <div className="flex gap-3">
               <button
                 onClick={() => setShowAnswerConfirm(false)}
-                className="flex-1 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl hover:from-cyan-400 hover:to-blue-400 transition-all"
+                className="flex-1 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 transition-all"
               >
                 Testa igen
               </button>

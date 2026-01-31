@@ -143,11 +143,11 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
             <button
               onClick={() => setMode('sandbox')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === 'sandbox'
-                ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                ? 'bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50'
                 : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
                 }`}
             >
-              🧪 Sandbox
+              Sandbox
             </button>
             <button
               onClick={() => setMode('build')}
@@ -156,7 +156,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                 : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
                 }`}
             >
-              🏗️ Bygg Databas
+              Bygg Databas
             </button>
             <button
               onClick={() => setMode('learn')}
@@ -165,7 +165,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                 : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
                 }`}
             >
-              📚 Lär dig SQL
+              Lär dig SQL
             </button>
           </div>
 
@@ -176,7 +176,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                   <select
                     value={currentDatabase}
                     onChange={(e) => onDatabaseChange(e.target.value as DatabaseType)}
-                    className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-200"
+                    className="bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm font-medium text-zinc-200 [&>option]:bg-zinc-900 [&>option]:text-white"
                   >
                     <option value="ecommerce">E-commerce</option>
                     <option value="chinook">Chinook</option>
@@ -184,15 +184,15 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                   </select>
                 )}
                 {useCustomDb && (
-                  <span className="text-green-400 text-sm font-medium px-3 py-1.5 bg-green-500/20 rounded-lg">
-                    📁 {customDbName}
+                  <span className="text-fuchsia-400 text-sm font-medium px-3 py-1.5 bg-fuchsia-500/20 rounded-lg">
+                    {customDbName}
                   </span>
                 )}
                 <button
                   onClick={() => setShowResetConfirm(true)}
                   className="px-3 py-1.5 bg-red-900/50 text-red-400 border border-red-800 rounded-lg text-sm font-medium hover:bg-red-900/70 transition-colors"
                 >
-                  🗑️ Återställ
+                  Återställ
                 </button>
               </>
             )}
@@ -211,7 +211,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
 
             {Object.entries(learnContent).map(([key, section]) => (
               <div key={key} className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
-                <h2 className="text-xl font-bold text-cyan-400 mb-2">{section.title}</h2>
+                <h2 className="text-xl font-bold text-fuchsia-400 mb-2">{section.title}</h2>
                 <p className="text-zinc-400 mb-4">{section.description}</p>
 
                 <div className="space-y-3">
@@ -229,7 +229,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                           setQuery(cmd.example);
                           setMode('sandbox');
                         }}
-                        className="mt-2 text-xs text-cyan-400 hover:text-cyan-300"
+                        className="mt-2 text-xs text-fuchsia-400 hover:text-fuchsia-300"
                       >
                         → Testa i Sandbox
                       </button>
@@ -248,7 +248,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
           {/* Left: Controls */}
           <div className="w-80 border-r border-zinc-800 flex flex-col">
             <div className="p-4 border-b border-zinc-800">
-              <h2 className="text-lg font-semibold text-white mb-4">🏗️ Bygg din databas</h2>
+              <h2 className="text-lg font-semibold text-white mb-4">Bygg din databas</h2>
 
               {!useCustomDb ? (
                 <button
@@ -288,11 +288,11 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                       key={table}
                       onClick={() => loadTableSchema(table)}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedTable === table
-                        ? 'bg-cyan-500/20 text-cyan-400'
+                        ? 'bg-fuchsia-500/20 text-fuchsia-400'
                         : 'text-zinc-300 hover:bg-zinc-800'
                         }`}
                     >
-                      📋 {table}
+                      {table}
                     </button>
                   ))}
                 </div>
@@ -305,7 +305,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                   {tableSchema.map(col => (
                     <div key={col.name} className="flex justify-between text-xs py-1">
                       <span className={`font-mono ${col.pk ? 'text-yellow-400' : 'text-zinc-300'}`}>
-                        {col.pk && '🔑 '}{col.name}
+                        {col.pk && ''}{col.name}
                       </span>
                       <span className="text-zinc-500">{col.type}</span>
                     </div>
@@ -323,7 +323,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                     key={fmt}
                     onClick={() => setExportFormat(fmt)}
                     className={`flex-1 py-1.5 text-xs rounded ${exportFormat === fmt
-                      ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                      ? 'bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50'
                       : 'bg-zinc-800 text-zinc-400'
                       }`}
                   >
@@ -336,7 +336,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                 disabled={tables.length === 0}
                 className="w-full py-2 bg-zinc-700 text-white rounded-lg hover:bg-zinc-600 disabled:opacity-50 text-sm"
               >
-                📥 Ladda ner .sql
+                ⬇ Ladda ner .sql
               </button>
             </div>
           </div>
@@ -350,7 +350,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                 <button
                   onClick={handleExecute}
                   disabled={isLoading || !query.trim()}
-                  className="flex-1 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400 disabled:opacity-50 transition-colors"
+                  className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 disabled:opacity-50 transition-colors"
                 >
                   {isLoading ? 'Kör...' : 'Kör (Ctrl+Enter)'}
                 </button>
@@ -413,7 +413,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
             <div className="p-4 border-b border-zinc-800">
               <button
                 onClick={loadTables}
-                className="w-full py-2 bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 rounded-lg text-sm font-medium hover:bg-cyan-500/30"
+                className="w-full py-2 bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50 rounded-lg text-sm font-medium hover:bg-fuchsia-500/30"
               >
                 🔄 Ladda tabeller
               </button>
@@ -426,7 +426,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                   key={table}
                   onClick={() => loadTableSchema(table)}
                   className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedTable === table
-                    ? 'bg-cyan-500/20 text-cyan-400'
+                    ? 'bg-fuchsia-500/20 text-fuchsia-400'
                     : 'text-zinc-300 hover:bg-zinc-800'
                     }`}
                 >
@@ -458,7 +458,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
               <button
                 onClick={handleExecute}
                 disabled={isLoading || !query.trim()}
-                className="flex-1 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400 disabled:opacity-50"
+                className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 disabled:opacity-50"
               >
                 {isLoading ? 'Kör...' : 'Kör (Ctrl+Enter)'}
               </button>
@@ -526,7 +526,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
       {showExampleModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
           <div className="bg-zinc-900 border border-zinc-700 rounded-xl p-6 max-w-lg">
-            <h3 className="text-lg font-semibold text-white mb-2">🏗️ Tom databas skapad!</h3>
+            <h3 className="text-lg font-semibold text-white mb-2">Tom databas skapad!</h3>
             <p className="text-zinc-400 text-sm mb-4">
               Du har nu en tom databas. Börja med att skapa tabeller med CREATE TABLE.
             </p>
@@ -563,7 +563,7 @@ INSERT INTO users (name, email) VALUES ('Anna', 'anna@example.com');
 SELECT * FROM users;`);
                   setShowExampleModal(false);
                 }}
-                className="flex-1 py-2 bg-cyan-500 text-zinc-950 font-semibold rounded-lg hover:bg-cyan-400"
+                className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400"
               >
                 Använd exempel
               </button>
