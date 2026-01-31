@@ -2,11 +2,3 @@
 name = "sql-arena"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-01-31"
-
-[env.production]
-compatibility_date = "2024-01-01"
-
-[[env.production.d1_databases]]
-database_id = "302686c8-ef7e-46ed-9c82-bf754718c69f"
-binding = "DB"
-database_name = "DB"
