@@ -36,7 +36,9 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
           <div className="flex items-center justify-between h-14">
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">⬡</span>
+                <svg viewBox="0 0 64 64" className="w-7 h-7 text-cyan-400" fill="currentColor">
+                  <path d="M32 4C18.7 4 8 9.4 8 16v32c0 6.6 10.7 12 24 12s24-5.4 24-12V16c0-6.6-10.7-12-24-12zm0 4c11.6 0 20 4.5 20 8s-8.4 8-20 8-20-4.5-20-8 8.4-8 20-8zm20 40c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V48zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V36zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V24z" />
+                </svg>
                 <span className="font-semibold text-lg tracking-tight">SQL Arena</span>
               </div>
 
