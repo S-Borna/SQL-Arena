@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: sql-arena-mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: arena_root_password
+      MYSQL_DATABASE: sql_arena
+      MYSQL_USER: arena_user
+      MYSQL_PASSWORD: arena_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - sql-arena-network
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: sql-arena-api
+    restart: unless-stopped
+    environment:
+      DATABASE_HOST: mariadb
+      DATABASE_PORT: 3306
+      DATABASE_USER: arena_user
+      DATABASE_PASSWORD: arena_password
+      DATABASE_NAME: sql_arena
+      NODE_ENV: production
+    ports:
+      - "3001:3001"
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    networks:
+      - sql-arena-network
+
+  minio:
+    image: minio/minio:latest
+    container_name: sql-arena-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - sql-arena-network
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  createbuckets:
+    image: minio/mc:latest
+    container_name: sql-arena-createbuckets
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set myminio http://minio:9000 minioadmin minioadmin123;
+      mc mb myminio/sql-arena-backups --ignore-existing;
+      mc anonymous set download myminio/sql-arena-backups;
+      exit 0;
+      "
+    networks:
+      - sql-arena-network
+
+networks:
+  sql-arena-network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+  minio_data:
