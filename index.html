@@ -13,7 +13,7 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <!-- Shield Protection -->
+  <!-- Shield Protection - Keyboard only, safer detection -->
   <script>
     // Disable right-click context menu
     document.addEventListener('contextmenu', e => e.preventDefault());
@@ -29,43 +29,6 @@
         return false;
       }
     });
-
-    // DevTools detection
-    (function () {
-      const threshold = 160;
-      const devtools = { open: false };
-
-      setInterval(() => {
-        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-
-        if (widthThreshold || heightThreshold) {
-          if (!devtools.open) {
-            devtools.open = true;
-            document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#09090b;color:#ef4444;font-family:Inter,sans-serif;font-size:24px;text-align:center;padding:20px;">⚠️ DevTools är inte tillåtet på denna sida</div>';
-          }
-        }
-      }, 500);
-
-      // Console detection
-      const element = new Image();
-      Object.defineProperty(element, 'id', {
-        get: function () {
-          devtools.open = true;
-          document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#09090b;color:#ef4444;font-family:Inter,sans-serif;font-size:24px;text-align:center;padding:20px;">⚠️ DevTools är inte tillåtet på denna sida</div>';
-        }
-      });
-      console.log(element);
-    })();
-
-    // Disable text selection
-    document.addEventListener('selectstart', e => e.preventDefault());
-
-    // Disable drag
-    document.addEventListener('dragstart', e => e.preventDefault());
-
-    // Disable copy
-    document.addEventListener('copy', e => e.preventDefault());
   </script>
   <style>
     * {
@@ -84,7 +47,6 @@
       user-select: text;
     }
   </style>
-<script src="/assets/js/shield.js"></script>
 </head>
 
 <body class="bg-zinc-950 text-zinc-100">
