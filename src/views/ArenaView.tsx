@@ -163,13 +163,13 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
               </svg>
               <select
                 value={currentDatabase}
                 onChange={(e) => onDatabaseChange(e.target.value as DatabaseType)}
-                className="bg-zinc-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-fuchsia-500/50 transition-colors [&>option]:bg-zinc-900 [&>option]:text-white"
+                className="bg-zinc-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-blue-500/50 transition-colors [&>option]:bg-zinc-900 [&>option]:text-white"
               >
                 <option value="ecommerce">E-commerce</option>
                 <option value="chinook">Chinook (Musik)</option>
@@ -187,7 +187,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
               ←
             </button>
             <span className="px-3 py-2 glass-card rounded-xl text-zinc-300">
-              <span className="text-fuchsia-400 font-bold">{currentIndex + 1}</span>
+              <span className="text-blue-400 font-bold">{currentIndex + 1}</span>
               <span className="text-zinc-500"> / {exercises.length}</span>
             </span>
             <button
@@ -210,8 +210,8 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
           <div className="flex-1 overflow-auto p-3">
             {schemaInfo.tables.map(table => (
               <div key={table} className="mb-4">
-                <h4 className="text-fuchsia-400 font-mono text-xs font-bold mb-1.5">{table}</h4>
-                <div className="space-y-0.5 pl-2 border-l border-fuchsia-500/30">
+                <h4 className="text-blue-400 font-mono text-xs font-bold mb-1.5">{table}</h4>
+                <div className="space-y-0.5 pl-2 border-l border-blue-500/30">
                   {schemaInfo.columns[table]?.map(col => (
                     <div key={col.name} className="flex justify-between text-[11px]">
                       <span className="text-zinc-400 font-mono">{col.name}</span>
@@ -232,11 +232,11 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
               <div className="max-w-4xl">
                 {/* Category tag */}
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1.5 bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 text-xs font-bold rounded-full uppercase tracking-wide border border-fuchsia-500/30">
+                  <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 text-xs font-bold rounded-full uppercase tracking-wide border border-blue-500/30">
                     {categoryNames[currentExercise.category] || currentExercise.category}
                   </span>
                   {currentExercise.difficulty === 'boss' && (
-                    <span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 text-xs font-bold rounded-full border border-purple-500/30">
+                    <span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-purple-500/20 text-purple-400 text-xs font-bold rounded-full border border-purple-500/30">
                       👑 BOSS
                     </span>
                   )}
@@ -317,7 +317,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
                   <button
                     onClick={handleExecute}
                     disabled={isLoading || !query.trim()}
-                    className="flex-1 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 disabled:opacity-50 transition-all shadow-lg shadow-fuchsia-500/20"
+                    className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-400 hover:to-purple-400 disabled:opacity-50 transition-all shadow-lg shadow-blue-500/20"
                   >
                     {isLoading ? 'Kör...' : '▶ Kör (Ctrl+Enter)'}
                   </button>
@@ -380,7 +380,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             <div className="flex gap-3">
               <button
                 onClick={() => setShowAnswerConfirm(false)}
-                className="flex-1 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 transition-all"
+                className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-400 hover:to-purple-400 transition-all"
               >
                 Testa igen
               </button>

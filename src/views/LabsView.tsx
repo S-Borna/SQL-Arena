@@ -143,7 +143,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
             <button
               onClick={() => setMode('sandbox')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === 'sandbox'
-                ? 'bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50'
+                ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
                 : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
                 }`}
             >
@@ -175,7 +175,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                   </select>
                 )}
                 {useCustomDb && (
-                  <span className="text-fuchsia-400 text-sm font-medium px-3 py-1.5 bg-fuchsia-500/20 rounded-lg">
+                  <span className="text-blue-400 text-sm font-medium px-3 py-1.5 bg-blue-500/20 rounded-lg">
                     {customDbName}
                   </span>
                 )}
@@ -202,7 +202,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
 
             {Object.entries(learnContent).map(([key, section]) => (
               <div key={key} className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
-                <h2 className="text-xl font-bold text-fuchsia-400 mb-2">{section.title}</h2>
+                <h2 className="text-xl font-bold text-blue-400 mb-2">{section.title}</h2>
                 <p className="text-zinc-400 mb-4">{section.description}</p>
 
                 <div className="space-y-3">
@@ -220,7 +220,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                           setQuery(cmd.example);
                           setMode('sandbox');
                         }}
-                        className="mt-2 text-xs text-fuchsia-400 hover:text-fuchsia-300"
+                        className="mt-2 text-xs text-blue-400 hover:text-blue-300"
                       >
                         → Testa i Sandbox
                       </button>
@@ -279,7 +279,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                       key={table}
                       onClick={() => loadTableSchema(table)}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedTable === table
-                        ? 'bg-fuchsia-500/20 text-fuchsia-400'
+                        ? 'bg-blue-500/20 text-blue-400'
                         : 'text-zinc-300 hover:bg-zinc-800'
                         }`}
                     >
@@ -314,7 +314,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                     key={fmt}
                     onClick={() => setExportFormat(fmt)}
                     className={`flex-1 py-1.5 text-xs rounded ${exportFormat === fmt
-                      ? 'bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50'
+                      ? 'bg-blue-500/20 text-blue-400 border border-blue-500/50'
                       : 'bg-zinc-800 text-zinc-400'
                       }`}
                   >
@@ -341,7 +341,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                 <button
                   onClick={handleExecute}
                   disabled={isLoading || !query.trim()}
-                  className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 disabled:opacity-50 transition-colors"
+                  className="flex-1 py-2 bg-blue-500 text-zinc-950 font-semibold rounded-lg hover:bg-blue-400 disabled:opacity-50 transition-colors"
                 >
                   {isLoading ? 'Kör...' : 'Kör (Ctrl+Enter)'}
                 </button>
@@ -404,7 +404,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
             <div className="p-4 border-b border-zinc-800">
               <button
                 onClick={loadTables}
-                className="w-full py-2 bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50 rounded-lg text-sm font-medium hover:bg-fuchsia-500/30"
+                className="w-full py-2 bg-blue-500/20 text-blue-400 border border-blue-500/50 rounded-lg text-sm font-medium hover:bg-blue-500/30"
               >
                 🔄 Ladda tabeller
               </button>
@@ -417,7 +417,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                   key={table}
                   onClick={() => loadTableSchema(table)}
                   className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedTable === table
-                    ? 'bg-fuchsia-500/20 text-fuchsia-400'
+                    ? 'bg-blue-500/20 text-blue-400'
                     : 'text-zinc-300 hover:bg-zinc-800'
                     }`}
                 >
@@ -449,7 +449,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
               <button
                 onClick={handleExecute}
                 disabled={isLoading || !query.trim()}
-                className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 disabled:opacity-50"
+                className="flex-1 py-2 bg-blue-500 text-zinc-950 font-semibold rounded-lg hover:bg-blue-400 disabled:opacity-50"
               >
                 {isLoading ? 'Kör...' : 'Kör (Ctrl+Enter)'}
               </button>
@@ -554,7 +554,7 @@ INSERT INTO users (name, email) VALUES ('Anna', 'anna@example.com');
 SELECT * FROM users;`);
                   setShowExampleModal(false);
                 }}
-                className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400"
+                className="flex-1 py-2 bg-blue-500 text-zinc-950 font-semibold rounded-lg hover:bg-blue-400"
               >
                 Använd exempel
               </button>
