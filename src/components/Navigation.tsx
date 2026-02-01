@@ -7,6 +7,7 @@ interface NavigationProps {
   currentView: ViewType;
   onViewChange: (view: ViewType) => void;
   streak: number;
+  onLogoClick?: () => void;
 }
 
 // SVG icon components for cleaner code
@@ -45,7 +46,7 @@ const navItems: { id: ViewType; label: string }[] = [
   { id: 'hanukkah', label: 'Hanukkah of Data' }
 ];
 
-export function Navigation({ currentView, onViewChange, streak }: NavigationProps) {
+export function Navigation({ currentView, onViewChange, streak, onLogoClick }: NavigationProps) {
   const [showCheatSheet, setShowCheatSheet] = useState(false);
 
   // Close on ESC
@@ -63,7 +64,7 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onViewChange('arena')}>
+              <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onLogoClick?.()}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-blue-500/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
                   <svg viewBox="0 0 64 64" className="relative w-8 h-8 text-blue-400 group-hover:drop-shadow-[0_0_8px_rgba(217,70,239,0.5)] transition-all" fill="currentColor">
