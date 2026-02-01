@@ -341,7 +341,7 @@ export function HanukkahView() {
                 <div className="flex-1 overflow-auto p-2 text-xs">
                     {schemaInfo.tables.map(table => (
                         <div key={table} className="mb-3">
-                            <h4 className="text-fuchsia-400 font-mono font-semibold mb-1">{table}</h4>
+                            <h4 className="text-blue-400 font-mono font-semibold mb-1">{table}</h4>
                             <div className="pl-2 border-l border-zinc-700 space-y-0.5">
                                 {schemaInfo.columns[table]?.map(col => (
                                     <div key={col.name} className="flex justify-between">
@@ -402,7 +402,7 @@ export function HanukkahView() {
                                 onClick={() => setShowHint(!showHint)}
                                 className="flex items-center gap-2 text-yellow-400 font-semibold text-sm hover:text-yellow-300 transition-colors"
                             >
-                                <span className="text-lg">💡</span> 
+                                <span className="text-lg">💡</span>
                                 <span>Ledtråd</span>
                                 <span className="text-yellow-500/60 text-xs ml-1">{showHint ? '▼' : '▶'}</span>
                             </button>
@@ -453,7 +453,7 @@ export function HanukkahView() {
                                 <button
                                     onClick={handleExecute}
                                     disabled={isLoading || !query.trim()}
-                                    className="flex-1 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 disabled:opacity-50"
+                                    className="flex-1 py-2 bg-blue-500 text-zinc-950 font-semibold rounded-lg hover:bg-blue-400 disabled:opacity-50"
                                 >
                                     {isLoading ? 'Kör...' : 'Kör SQL'}
                                 </button>

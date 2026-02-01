@@ -1337,7 +1337,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
           <div className="flex items-center gap-2 bg-zinc-800 rounded-lg p-1">
             <button
               onClick={() => setViewMode('read')}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${viewMode === 'read' ? 'bg-fuchsia-500 text-white' : 'text-zinc-400 hover:text-white'
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${viewMode === 'read' ? 'bg-blue-500 text-white' : 'text-zinc-400 hover:text-white'
                 }`}
             >
               📖 Läs
@@ -1370,14 +1370,14 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
         {viewMode === 'read' && (
           <div className="flex-1 flex overflow-hidden">
             {/* Category sidebar */}
-            <div className="w-56 border-r border-zinc-700 overflow-y-auto p-3 bg-zinc-900/50">
+            <div className="w-64 border-r border-zinc-700 p-3 bg-zinc-900/50 flex-shrink-0">
               {cheatSheetData.map((category) => (
                 <button
                   key={category.name}
                   onClick={() => setActiveCategory(category.name)}
                   className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all mb-1 ${activeCategory === category.name
-                      ? 'bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 border border-fuchsia-500/30'
-                      : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200'
+                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30'
+                    : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200'
                     }`}
                 >
                   <span className="mr-2">{category.icon}</span>
@@ -1402,7 +1402,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                     >
                       {/* Syntax header */}
                       <div className="flex items-start justify-between gap-4 mb-3">
-                        <code className="text-fuchsia-400 font-mono font-bold text-lg">
+                        <code className="text-blue-400 font-mono font-bold text-lg">
                           {item.syntax}
                         </code>
                         <span className="text-zinc-400 text-sm bg-zinc-700/50 px-3 py-1 rounded-full whitespace-nowrap">
@@ -1448,7 +1448,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                   Kort {flashcardIndex + 1} av {allItems.length}
                 </span>
                 <span className="text-zinc-600 mx-2">•</span>
-                <span className="text-fuchsia-500 text-sm">{allItems[flashcardIndex].category}</span>
+                <span className="text-blue-500 text-sm">{allItems[flashcardIndex].category}</span>
               </div>
 
               {/* Card */}
@@ -1524,7 +1524,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
 
               {/* Question */}
               <div className="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 mb-6">
-                <p className="text-fuchsia-500 text-sm mb-2 font-medium">{currentQuizItem.category}</p>
+                <p className="text-blue-500 text-sm mb-2 font-medium">{currentQuizItem.category}</p>
                 <p className="text-white text-lg leading-relaxed">
                   {currentQuizItem.item.quizQ}
                 </p>
@@ -1538,7 +1538,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                   let className = 'w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3 ';
 
                   if (selectedAnswer === null) {
-                    className += 'bg-zinc-800/50 border-zinc-700 hover:border-fuchsia-500/50 hover:bg-zinc-800 text-zinc-300 cursor-pointer';
+                    className += 'bg-zinc-800/50 border-zinc-700 hover:border-blue-500/50 hover:bg-zinc-800 text-zinc-300 cursor-pointer';
                   } else if (isCorrect) {
                     className += 'bg-green-500/20 border-green-500 text-green-300';
                   } else if (isSelected) {
@@ -1555,12 +1555,12 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                       className={className}
                     >
                       <span className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${selectedAnswer === null
-                          ? 'bg-zinc-700 text-zinc-400'
-                          : isCorrect
-                            ? 'bg-green-500 text-white'
-                            : isSelected
-                              ? 'bg-red-500 text-white'
-                              : 'bg-zinc-700/50 text-zinc-500'
+                        ? 'bg-zinc-700 text-zinc-400'
+                        : isCorrect
+                          ? 'bg-green-500 text-white'
+                          : isSelected
+                            ? 'bg-red-500 text-white'
+                            : 'bg-zinc-700/50 text-zinc-500'
                         }`}>
                         {String.fromCharCode(65 + index)}
                       </span>
@@ -1585,7 +1585,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                 <div className="flex justify-center mt-6">
                   <button
                     onClick={nextQuizQuestion}
-                    className="px-8 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-semibold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 transition-all shadow-lg shadow-fuchsia-500/20"
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-400 hover:to-purple-400 transition-all shadow-lg shadow-blue-500/20"
                   >
                     Nästa fråga →
                   </button>

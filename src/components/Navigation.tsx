@@ -7,6 +7,7 @@ interface NavigationProps {
   currentView: ViewType;
   onViewChange: (view: ViewType) => void;
   streak: number;
+  onLogoClick?: () => void;
 }
 
 // SVG icon components for cleaner code
@@ -23,7 +24,7 @@ const DesignIcon = () => (
   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
 );
 const MysteryIcon = () => (
-  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.55 0 1 .45 1 1v2h-2V3c0-.55.45-1 1-1zM4 4c.55 0 1 .45 1 1v2H3V5c0-.55.45-1 1-1zm16 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM7 4c.55 0 1 .45 1 1v2H6V5c0-.55.45-1 1-1zm10 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM9.5 4c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zm5 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM3 8h18v2H3V8zm1 4h16v1c0 2.21-1.79 4-4 4h-2v3h-4v-3H8c-2.21 0-4-1.79-4-4v-1z" /></svg>
 );
 
 const getNavIcon = (id: ViewType) => {
@@ -42,10 +43,10 @@ const navItems: { id: ViewType; label: string }[] = [
   { id: 'roadmap', label: 'Roadmap' },
   { id: 'labs', label: 'Labs' },
   { id: 'design', label: 'Design Studio' },
-  { id: 'hanukkah', label: 'Mystery' }
+  { id: 'hanukkah', label: 'Hanukkah of Data' }
 ];
 
-export function Navigation({ currentView, onViewChange, streak }: NavigationProps) {
+export function Navigation({ currentView, onViewChange, streak, onLogoClick }: NavigationProps) {
   const [showCheatSheet, setShowCheatSheet] = useState(false);
 
   // Close on ESC
@@ -63,10 +64,10 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
-              <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onViewChange('arena')}>
+              <div className="flex items-center gap-2 group cursor-pointer" onClick={() => onLogoClick?.()}>
                 <div className="relative">
-                  <div className="absolute inset-0 bg-fuchsia-500/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <svg viewBox="0 0 64 64" className="relative w-8 h-8 text-fuchsia-400 group-hover:drop-shadow-[0_0_8px_rgba(217,70,239,0.5)] transition-all" fill="currentColor">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <svg viewBox="0 0 64 64" className="relative w-8 h-8 text-blue-400 group-hover:drop-shadow-[0_0_8px_rgba(217,70,239,0.5)] transition-all" fill="currentColor">
                     <path d="M32 4C18.7 4 8 9.4 8 16v32c0 6.6 10.7 12 24 12s24-5.4 24-12V16c0-6.6-10.7-12-24-12zm0 4c11.6 0 20 4.5 20 8s-8.4 8-20 8-20-4.5-20-8 8.4-8 20-8zm20 40c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V48zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V36zm0-12c0 3.5-8.4 8-20 8s-20-4.5-20-8v-6.2c4.3 3.4 11.6 5.2 20 5.2s15.7-1.8 20-5.2V24z" />
                   </svg>
                 </div>
@@ -81,13 +82,13 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
                     className={`
                       relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200
                       ${currentView === item.id
-                        ? 'text-fuchsia-400'
+                        ? 'text-blue-400'
                         : 'text-zinc-400 hover:text-white'
                       }
                     `}
                   >
                     {currentView === item.id && (
-                      <div className="absolute inset-0 bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-xl" />
+                      <div className="absolute inset-0 bg-blue-500/10 border border-blue-500/20 rounded-xl" />
                     )}
                     <span className="relative flex items-center gap-2">
                       {getNavIcon(item.id)}
@@ -102,7 +103,7 @@ export function Navigation({ currentView, onViewChange, streak }: NavigationProp
               {/* Cheat Sheet Button */}
               <button
                 onClick={() => setShowCheatSheet(true)}
-                className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/[0.05] text-zinc-400 hover:text-fuchsia-400 rounded-xl text-sm font-medium transition-all hover:border-fuchsia-500/30"
+                className="flex items-center gap-2 px-3 py-2 bg-white/[0.02] border border-white/[0.05] text-zinc-400 hover:text-blue-400 rounded-xl text-sm font-medium transition-all hover:border-blue-500/30"
                 title="SQL Cheat Sheet"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>

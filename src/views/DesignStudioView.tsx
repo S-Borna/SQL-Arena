@@ -433,7 +433,7 @@ export function DesignStudioView({}: DesignStudioViewProps) {
               }}
               className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
                 selectedExercise.id === ex.id
-                  ? 'bg-fuchsia-500/20 text-fuchsia-400'
+                  ? 'bg-blue-500/20 text-blue-400'
                   : 'text-zinc-400 hover:bg-zinc-800'
               }`}
             >
@@ -452,7 +452,7 @@ export function DesignStudioView({}: DesignStudioViewProps) {
               <p className="text-zinc-400">{selectedExercise.description}</p>
               <div className="flex gap-2 mt-3">
                 {selectedExercise.courseGoals.map(id => (
-                  <span key={id} className="px-2 py-0.5 bg-zinc-800 text-fuchsia-400 text-xs rounded font-mono">
+                  <span key={id} className="px-2 py-0.5 bg-zinc-800 text-blue-400 text-xs rounded font-mono">
                     Kursmål {id}
                   </span>
                 ))}
@@ -489,12 +489,12 @@ export function DesignStudioView({}: DesignStudioViewProps) {
                   value={newTableName}
                   onChange={(e) => setNewTableName(e.target.value)}
                   placeholder="Tabellnamn"
-                  className="flex-1 px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                  className="flex-1 px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onKeyDown={(e) => e.key === 'Enter' && addTable()}
                 />
                 <button
                   onClick={addTable}
-                  className="px-4 py-2 bg-fuchsia-500 text-zinc-950 font-semibold rounded-lg hover:bg-fuchsia-400 transition-colors"
+                  className="px-4 py-2 bg-blue-500 text-zinc-950 font-semibold rounded-lg hover:bg-blue-400 transition-colors"
                 >
                   Lägg till tabell
                 </button>
@@ -520,7 +520,7 @@ export function DesignStudioView({}: DesignStudioViewProps) {
                 value={motivation}
                 onChange={(e) => setMotivation(e.target.value)}
                 placeholder="Förklara varför du valde denna design. Hur eliminerar den redundans? Vilka beroenden har du identifierat?"
-                className="w-full h-32 px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-200 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                className="w-full h-32 px-3 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-200 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -550,7 +550,7 @@ export function DesignStudioView({}: DesignStudioViewProps) {
 
           <div className="space-y-4 text-xs">
             <div className="p-3 bg-zinc-800/50 rounded-lg">
-              <h4 className="font-semibold text-fuchsia-400 mb-2">1NF (Första normalformen)</h4>
+              <h4 className="font-semibold text-blue-400 mb-2">1NF (Första normalformen)</h4>
               <ul className="space-y-1 text-zinc-400">
                 <li>• Atomära värden (inga listor i celler)</li>
                 <li>• Inga upprepande kolumngrupper</li>
@@ -559,7 +559,7 @@ export function DesignStudioView({}: DesignStudioViewProps) {
             </div>
 
             <div className="p-3 bg-zinc-800/50 rounded-lg">
-              <h4 className="font-semibold text-fuchsia-400 mb-2">2NF (Andra normalformen)</h4>
+              <h4 className="font-semibold text-blue-400 mb-2">2NF (Andra normalformen)</h4>
               <ul className="space-y-1 text-zinc-400">
                 <li>• Uppfyller 1NF</li>
                 <li>• Inga partiella beroenden</li>
@@ -568,7 +568,7 @@ export function DesignStudioView({}: DesignStudioViewProps) {
             </div>
 
             <div className="p-3 bg-zinc-800/50 rounded-lg">
-              <h4 className="font-semibold text-fuchsia-400 mb-2">3NF (Tredje normalformen)</h4>
+              <h4 className="font-semibold text-blue-400 mb-2">3NF (Tredje normalformen)</h4>
               <ul className="space-y-1 text-zinc-400">
                 <li>• Uppfyller 2NF</li>
                 <li>• Inga transitiva beroenden</li>
@@ -695,7 +695,7 @@ function TableEditor({ table, allTables, onAddColumn, onRemoveColumn, onRemoveTa
         )}
         <button
           onClick={handleAdd}
-          className="px-2 py-1 bg-fuchsia-500 text-zinc-950 font-medium rounded text-sm hover:bg-fuchsia-400"
+          className="px-2 py-1 bg-blue-500 text-zinc-950 font-medium rounded text-sm hover:bg-blue-400"
         >
           +
         </button>
