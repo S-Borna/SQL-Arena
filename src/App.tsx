@@ -118,7 +118,6 @@ function App() {
         currentView={currentView}
         onViewChange={setCurrentView}
         streak={streak}
-        onLogoClick={() => setShowLanding(true)}
       />
       <main className="flex-1 flex flex-col">
         {renderView()}

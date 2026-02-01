@@ -45,7 +45,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             onClick={onClose}
         >
             <div
-                className="bg-gradient-to-br from-zinc-800 via-zinc-900 to-zinc-950 rounded-2xl p-8 w-full max-w-md border border-blue-500/30 shadow-[0_0_60px_rgba(0,200,255,0.15)] mx-4"
+                className="bg-gradient-to-br from-zinc-800 via-zinc-900 to-zinc-950 rounded-2xl p-8 w-full max-w-md border border-fuchsia-500/30 shadow-[0_0_60px_rgba(0,200,255,0.15)] mx-4"
                 style={{ marginTop: '-10vh' }}
                 onClick={(e) => e.stopPropagation()}
             >
@@ -78,7 +78,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fuchsia-500"
                                 placeholder="Ditt namn"
                                 required
                             />
@@ -91,7 +91,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fuchsia-500"
                             placeholder="din@email.se"
                             required
                         />
@@ -103,7 +103,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"
+                            className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-fuchsia-500"
                             placeholder="••••••••"
                             required
                             minLength={6}
@@ -113,7 +113,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 transition-all"
+                        className="w-full bg-gradient-to-r from-fuchsia-500 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-fuchsia-600 hover:to-pink-700 disabled:opacity-50 transition-all"
                     >
                         {loading ? 'Laddar...' : mode === 'login' ? 'Logga in' : 'Skapa konto'}
                     </button>
@@ -125,7 +125,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                             setMode(mode === 'login' ? 'register' : 'login');
                             setError('');
                         }}
-                        className="text-blue-400 hover:text-blue-300"
+                        className="text-fuchsia-400 hover:text-fuchsia-300"
                     >
                         {mode === 'login'
                             ? 'Har du inget konto? Skapa ett här'

@@ -39,6 +39,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
   const [showHint, setShowHint] = useState(false);
   const [showAnswerConfirm, setShowAnswerConfirm] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [showSchema, setShowSchema] = useState(false);
   const [schemaInfo, setSchemaInfo] = useState<{ tables: string[], columns: Record<string, { name: string, type: string }[]> }>({ tables: [], columns: {} });
   const { user, saveProgress } = useAuth();
 
@@ -162,20 +163,25 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
       <div className="border-b border-white/5 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-              </svg>
-              <select
-                value={currentDatabase}
-                onChange={(e) => onDatabaseChange(e.target.value as DatabaseType)}
-                className="bg-zinc-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-blue-500/50 transition-colors [&>option]:bg-zinc-900 [&>option]:text-white"
-              >
-                <option value="ecommerce">E-commerce</option>
-                <option value="chinook">Chinook (Musik)</option>
-                <option value="school">School</option>
-              </select>
-            </div>
+            <select
+              value={currentDatabase}
+              onChange={(e) => onDatabaseChange(e.target.value as DatabaseType)}
+              className="bg-zinc-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-fuchsia-500/50 transition-colors [&>option]:bg-zinc-900 [&>option]:text-white"
+            >
+              <option value="ecommerce">E-commerce</option>
+              <option value="chinook">Chinook (Musik)</option>
+              <option value="school">School</option>
+            </select>
+
+            <button
+              onClick={() => setShowSchema(!showSchema)}
+              className={`px-4 py-2.5 text-sm font-medium rounded-xl transition-all ${showSchema
+                ? 'bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/50'
+                : 'glass-card text-zinc-400 hover:text-white hover:border-white/20'
+                }`}
+            >
+              Schema
+            </button>
           </div>
 
           <div className="flex items-center gap-2 text-sm">
@@ -187,7 +193,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
               ←
             </button>
             <span className="px-3 py-2 glass-card rounded-xl text-zinc-300">
-              <span className="text-blue-400 font-bold">{currentIndex + 1}</span>
+              <span className="text-fuchsia-400 font-bold">{currentIndex + 1}</span>
               <span className="text-zinc-500"> / {exercises.length}</span>
             </span>
             <button
@@ -202,27 +208,29 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
       </div>
 
       <div className="flex-1 flex overflow-hidden">
-        {/* Schema Panel - Always visible */}
-        <div className="w-56 border-r border-white/5 flex flex-col bg-black/20 backdrop-blur-sm overflow-hidden">
-          <div className="px-4 py-3 border-b border-white/5">
-            <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-wide">Tabeller</h3>
-          </div>
-          <div className="flex-1 overflow-auto p-3">
-            {schemaInfo.tables.map(table => (
-              <div key={table} className="mb-4">
-                <h4 className="text-blue-400 font-mono text-xs font-bold mb-1.5">{table}</h4>
-                <div className="space-y-0.5 pl-2 border-l border-blue-500/30">
-                  {schemaInfo.columns[table]?.map(col => (
-                    <div key={col.name} className="flex justify-between text-[11px]">
-                      <span className="text-zinc-400 font-mono">{col.name}</span>
-                      <span className="text-zinc-600">{col.type}</span>
-                    </div>
-                  ))}
+        {/* Schema Panel */}
+        {showSchema && (
+          <div className="w-72 border-r border-white/5 flex flex-col bg-black/20 backdrop-blur-sm overflow-hidden">
+            <div className="px-4 py-4 border-b border-white/5">
+              <h3 className="text-sm font-bold text-white">Tabeller</h3>
+            </div>
+            <div className="flex-1 overflow-auto p-4">
+              {schemaInfo.tables.map(table => (
+                <div key={table} className="mb-5">
+                  <h4 className="text-fuchsia-400 font-mono text-sm font-bold mb-2">{table}</h4>
+                  <div className="space-y-1 pl-3 border-l-2 border-fuchsia-500/30">
+                    {schemaInfo.columns[table]?.map(col => (
+                      <div key={col.name} className="flex justify-between text-xs">
+                        <span className="text-zinc-300 font-mono">{col.name}</span>
+                        <span className="text-zinc-600">{col.type}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
@@ -232,11 +240,11 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
               <div className="max-w-4xl">
                 {/* Category tag */}
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 text-xs font-bold rounded-full uppercase tracking-wide border border-blue-500/30">
+                  <span className="px-3 py-1.5 bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 text-xs font-bold rounded-full uppercase tracking-wide border border-fuchsia-500/30">
                     {categoryNames[currentExercise.category] || currentExercise.category}
                   </span>
                   {currentExercise.difficulty === 'boss' && (
-                    <span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-purple-500/20 text-purple-400 text-xs font-bold rounded-full border border-purple-500/30">
+                    <span className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 text-xs font-bold rounded-full border border-purple-500/30">
                       👑 BOSS
                     </span>
                   )}
@@ -301,8 +309,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
           <div className="flex-1 grid grid-cols-2 gap-0 min-h-0">
             {/* Editor */}
             <div className="flex flex-col border-r border-white/5">
-              {/* Editor area with fixed height for ~25 lines */}
-              <div className="h-[400px] overflow-auto">
+              <div className="flex-1 min-h-0">
                 <SqlEditor
                   value={query}
                   onChange={setQuery}
@@ -311,13 +318,13 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
                 />
               </div>
 
-              {/* Run button + status - fixed position */}
-              <div className="p-4 border-t border-white/5 bg-black/40">
+              {/* Run button + status */}
+              <div className="p-4 border-t border-white/5 bg-black/20">
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleExecute}
                     disabled={isLoading || !query.trim()}
-                    className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-400 hover:to-purple-400 disabled:opacity-50 transition-all shadow-lg shadow-blue-500/20"
+                    className="flex-1 py-3.5 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 disabled:opacity-50 transition-all shadow-lg shadow-fuchsia-500/20"
                   >
                     {isLoading ? 'Kör...' : '▶ Kör (Ctrl+Enter)'}
                   </button>
@@ -326,7 +333,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
                     <button
                       onClick={handleNextExercise}
                       disabled={currentIndex >= exercises.length - 1}
-                      className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:from-green-400 hover:to-emerald-400 disabled:opacity-50 transition-all shadow-lg shadow-green-500/20"
+                      className="px-6 py-3.5 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:from-green-400 hover:to-emerald-400 disabled:opacity-50 transition-all shadow-lg shadow-green-500/20"
                     >
                       Nästa →
                     </button>
@@ -380,7 +387,7 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             <div className="flex gap-3">
               <button
                 onClick={() => setShowAnswerConfirm(false)}
-                className="flex-1 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-400 hover:to-purple-400 transition-all"
+                className="flex-1 py-3 bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-bold rounded-xl hover:from-fuchsia-400 hover:to-pink-400 transition-all"
               >
                 Testa igen
               </button>
