@@ -158,15 +158,6 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
             >
               Bygg Databas
             </button>
-            <button
-              onClick={() => setMode('learn')}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${mode === 'learn'
-                ? 'bg-purple-500/20 text-purple-400 border border-purple-500/50'
-                : 'bg-zinc-800 text-zinc-400 hover:text-zinc-200'
-                }`}
-            >
-              Lär dig SQL
-            </button>
           </div>
 
           <div className="flex items-center gap-3">

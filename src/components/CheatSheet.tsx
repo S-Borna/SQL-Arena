@@ -1370,7 +1370,7 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
         {viewMode === 'read' && (
           <div className="flex-1 flex overflow-hidden">
             {/* Category sidebar */}
-            <div className="w-56 border-r border-zinc-700 overflow-y-auto p-3 bg-zinc-900/50">
+            <div className="w-64 border-r border-zinc-700 p-3 bg-zinc-900/50 flex-shrink-0">
               {cheatSheetData.map((category) => (
                 <button
                   key={category.name}
