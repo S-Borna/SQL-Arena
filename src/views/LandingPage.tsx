@@ -189,7 +189,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
                                 </li>
                             </ul>
                         </div>
-                        
+
                         {/* With Account */}
                         <div className="relative p-6 rounded-2xl overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 via-pink-500/10 to-rose-500/10" />

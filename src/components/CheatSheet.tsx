@@ -1376,8 +1376,8 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                   key={category.name}
                   onClick={() => setActiveCategory(category.name)}
                   className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all mb-1 ${activeCategory === category.name
-                      ? 'bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 border border-fuchsia-500/30'
-                      : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200'
+                    ? 'bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 text-fuchsia-400 border border-fuchsia-500/30'
+                    : 'text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200'
                     }`}
                 >
                   <span className="mr-2">{category.icon}</span>
@@ -1555,12 +1555,12 @@ export function CheatSheet({ isOpen, onClose }: CheatSheetProps) {
                       className={className}
                     >
                       <span className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${selectedAnswer === null
-                          ? 'bg-zinc-700 text-zinc-400'
-                          : isCorrect
-                            ? 'bg-green-500 text-white'
-                            : isSelected
-                              ? 'bg-red-500 text-white'
-                              : 'bg-zinc-700/50 text-zinc-500'
+                        ? 'bg-zinc-700 text-zinc-400'
+                        : isCorrect
+                          ? 'bg-green-500 text-white'
+                          : isSelected
+                            ? 'bg-red-500 text-white'
+                            : 'bg-zinc-700/50 text-zinc-500'
                         }`}>
                         {String.fromCharCode(65 + index)}
                       </span>
