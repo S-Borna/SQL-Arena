@@ -157,7 +157,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
                             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-5 shadow-lg shadow-amber-500/25 group-hover:scale-110 transition-transform duration-300">
                                 {/* Menorah icon */}
                                 <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2c.55 0 1 .45 1 1v2h-2V3c0-.55.45-1 1-1zM4 4c.55 0 1 .45 1 1v2H3V5c0-.55.45-1 1-1zm16 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM7 4c.55 0 1 .45 1 1v2H6V5c0-.55.45-1 1-1zm10 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM9.5 4c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zm5 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM3 8h18v2H3V8zm1 4h16v1c0 2.21-1.79 4-4 4h-2v3h-4v-3H8c-2.21 0-4-1.79-4-4v-1z"/>
+                                    <path d="M12 2c.55 0 1 .45 1 1v2h-2V3c0-.55.45-1 1-1zM4 4c.55 0 1 .45 1 1v2H3V5c0-.55.45-1 1-1zm16 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM7 4c.55 0 1 .45 1 1v2H6V5c0-.55.45-1 1-1zm10 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM9.5 4c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zm5 0c.55 0 1 .45 1 1v2h-2V5c0-.55.45-1 1-1zM3 8h18v2H3V8zm1 4h16v1c0 2.21-1.79 4-4 4h-2v3h-4v-3H8c-2.21 0-4-1.79-4-4v-1z" />
                                 </svg>
                             </div>
                             <h3 className="text-xl font-bold text-white mb-3">Hanukkah of Data</h3>
@@ -251,9 +251,9 @@ export function LandingPage({ onStart }: LandingPageProps) {
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
                                 <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={2}>
-                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-                                    <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
+                                    <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                                    <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
                                 </svg>
                             </div>
                             <span className="text-2xl font-bold text-white">SQL Arena</span>
@@ -279,10 +279,10 @@ export function LandingPage({ onStart }: LandingPageProps) {
                         </div>
 
                         {/* Portfolio Link */}
-                        <a 
-                            href="https://saidborna.com" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                        <a
+                            href="https://saidborna.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-300 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:border-blue-500/50 hover:text-blue-400 transition-all duration-300"
                         >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

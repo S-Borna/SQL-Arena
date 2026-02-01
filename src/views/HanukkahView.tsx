@@ -402,7 +402,7 @@ export function HanukkahView() {
                                 onClick={() => setShowHint(!showHint)}
                                 className="flex items-center gap-2 text-yellow-400 font-semibold text-sm hover:text-yellow-300 transition-colors"
                             >
-                                <span className="text-lg">💡</span> 
+                                <span className="text-lg">💡</span>
                                 <span>Ledtråd</span>
                                 <span className="text-yellow-500/60 text-xs ml-1">{showHint ? '▼' : '▶'}</span>
                             </button>
