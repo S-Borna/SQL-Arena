@@ -4,7 +4,6 @@ import type { QueryResult, DatabaseType, PerformanceMetrics } from '../types';
 
 import ecommerceSql from '../data/seeds/ecommerce.sql?raw';
 import chinookSql from '../data/seeds/chinook.sql?raw';
-import hanukkahSql from '../data/seeds/hanukkah.sql?raw';
 import schoolSql from '../data/seeds/school.sql?raw';
 
 let SQL: SqlJsStatic | null = null;
@@ -12,13 +11,25 @@ let SQL: SqlJsStatic | null = null;
 const databases: Map<DatabaseType, Database> = new Map();
 const sandboxDatabases: Map<DatabaseType, Database> = new Map();
 let customDatabase: Database | null = null;
+let hanukkahDbBuffer: ArrayBuffer | null = null;
 
-const seedSql: Record<DatabaseType, string> = {
+const seedSql: Record<Exclude<DatabaseType, 'hanukkah'>, string> = {
   ecommerce: ecommerceSql,
   chinook: chinookSql,
-  hanukkah: hanukkahSql,
   school: schoolSql
 };
+
+// Load Hanukkah database from external SQLite file
+async function loadHanukkahDatabase(): Promise<ArrayBuffer> {
+  if (hanukkahDbBuffer) return hanukkahDbBuffer;
+
+  const response = await fetch('/noahs.sqlite');
+  if (!response.ok) {
+    throw new Error('Failed to load Hanukkah database');
+  }
+  hanukkahDbBuffer = await response.arrayBuffer();
+  return hanukkahDbBuffer;
+}
 
 export async function initializeSqlJs(): Promise<void> {
   if (SQL) return;
@@ -32,8 +43,15 @@ export async function getDatabase(type: DatabaseType): Promise<Database> {
   await initializeSqlJs();
 
   if (!databases.has(type)) {
-    const db = new SQL!.Database();
-    db.run(seedSql[type]);
+    let db: Database;
+    if (type === 'hanukkah') {
+      // Load from external SQLite file
+      const buffer = await loadHanukkahDatabase();
+      db = new SQL!.Database(new Uint8Array(buffer));
+    } else {
+      db = new SQL!.Database();
+      db.run(seedSql[type]);
+    }
     databases.set(type, db);
   }
 
@@ -44,8 +62,15 @@ export async function getSandboxDatabase(type: DatabaseType): Promise<Database> 
   await initializeSqlJs();
 
   if (!sandboxDatabases.has(type)) {
-    const db = new SQL!.Database();
-    db.run(seedSql[type]);
+    let db: Database;
+    if (type === 'hanukkah') {
+      // Load from external SQLite file
+      const buffer = await loadHanukkahDatabase();
+      db = new SQL!.Database(new Uint8Array(buffer));
+    } else {
+      db = new SQL!.Database();
+      db.run(seedSql[type]);
+    }
     sandboxDatabases.set(type, db);
   }
 
@@ -60,8 +85,14 @@ export async function resetSandboxDatabase(type: DatabaseType): Promise<void> {
     existingDb.close();
   }
 
-  const db = new SQL!.Database();
-  db.run(seedSql[type]);
+  let db: Database;
+  if (type === 'hanukkah') {
+    const buffer = await loadHanukkahDatabase();
+    db = new SQL!.Database(new Uint8Array(buffer));
+  } else {
+    db = new SQL!.Database();
+    db.run(seedSql[type]);
+  }
   sandboxDatabases.set(type, db);
 }
 
