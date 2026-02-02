@@ -1,6 +1,7 @@
 import initSqlJs from 'sql.js';
 import type { Database, SqlJsStatic } from 'sql.js';
 import type { QueryResult, DatabaseType, PerformanceMetrics } from '../types';
+import pako from 'pako';
 
 import ecommerceSql from '../data/seeds/ecommerce.sql?raw';
 import chinookSql from '../data/seeds/chinook.sql?raw';
@@ -28,12 +29,10 @@ async function loadHanukkahDatabase(): Promise<ArrayBuffer> {
     throw new Error('Failed to load Hanukkah database');
   }
 
-  // Decompress gzip
+  // Decompress gzip with pako
   const compressedBuffer = await response.arrayBuffer();
-  const decompressedStream = new Response(
-    new Blob([compressedBuffer]).stream().pipeThrough(new DecompressionStream('gzip'))
-  );
-  hanukkahDbBuffer = await decompressedStream.arrayBuffer();
+  const decompressed = pako.ungzip(new Uint8Array(compressedBuffer));
+  hanukkahDbBuffer = decompressed.buffer;
   return hanukkahDbBuffer;
 }
 
