@@ -19,15 +19,21 @@ const seedSql: Record<Exclude<DatabaseType, 'hanukkah'>, string> = {
   school: schoolSql
 };
 
-// Load Hanukkah database from external SQLite file
+// Load Hanukkah database from external SQLite file (gzip compressed)
 async function loadHanukkahDatabase(): Promise<ArrayBuffer> {
   if (hanukkahDbBuffer) return hanukkahDbBuffer;
 
-  const response = await fetch('/noahs.sqlite');
+  const response = await fetch('/noahs.sqlite.gz');
   if (!response.ok) {
     throw new Error('Failed to load Hanukkah database');
   }
-  hanukkahDbBuffer = await response.arrayBuffer();
+
+  // Decompress gzip
+  const compressedBuffer = await response.arrayBuffer();
+  const decompressedStream = new Response(
+    new Blob([compressedBuffer]).stream().pipeThrough(new DecompressionStream('gzip'))
+  );
+  hanukkahDbBuffer = await decompressedStream.arrayBuffer();
   return hanukkahDbBuffer;
 }
 
