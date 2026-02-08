@@ -470,14 +470,12 @@ export function HanukkahView() {
 
                             {/* Results - scrollbar */}
                             {result && (
-                                <div className="border border-zinc-700 rounded-lg overflow-hidden flex-1" style={{ maxHeight: 'calc(100vh - 480px)', minHeight: '300px' }}>
-                                    <div className="overflow-auto h-full">
-                                        {result.error ? (
-                                            <div className="p-3 text-red-400 text-sm">{result.error}</div>
-                                        ) : (
-                                            <ResultsTable result={result} isLoading={isLoading} />
-                                        )}
-                                    </div>
+                                <div className="border border-zinc-700 rounded-lg overflow-hidden" style={{ height: 'calc(100vh - 500px)', minHeight: '300px' }}>
+                                    {result.error ? (
+                                        <div className="p-3 text-red-400 text-sm">{result.error}</div>
+                                    ) : (
+                                        <ResultsTable result={result} isLoading={isLoading} />
+                                    )}
                                 </div>
                             )}
                         </>

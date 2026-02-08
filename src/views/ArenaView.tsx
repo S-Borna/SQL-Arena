@@ -352,8 +352,8 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
             </div>
 
             {/* Results */}
-            <div className="flex flex-col bg-black/20">
-              <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between">
+            <div className="flex flex-col bg-black/20 overflow-hidden">
+              <div className="px-4 py-3 border-b border-white/5 flex items-center justify-between shrink-0">
                 <span className="text-sm font-bold text-white">Resultat</span>
                 {result && !result.error && (
                   <span className="text-xs text-zinc-500 font-mono">
@@ -361,8 +361,8 @@ export function ArenaView({ currentDatabase, onDatabaseChange }: ArenaViewProps)
                   </span>
                 )}
               </div>
-              <div className="flex-1 min-h-0 overflow-auto">
-                <ResultsTable result={result} isLoading={isLoading} />
+              <div className="flex-1 min-h-0">
+                <ResultsTable result={result} isLoading={isLoading} hideHeader />
               </div>
             </div>
           </div>

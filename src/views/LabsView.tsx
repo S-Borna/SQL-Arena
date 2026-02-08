@@ -377,7 +377,7 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                             ✓ OK{res.rowCount > 0 ? ` — ${res.rowCount} rad${res.rowCount > 1 ? 'er' : ''}, ${res.columns.length} kolumn${res.columns.length > 1 ? 'er' : ''}` : ''}
                           </div>
                           {res.columns.length > 0 && res.values.length > 0 && (
-                            <div className="overflow-auto max-h-32">
+                            <div className="overflow-auto max-h-48 border border-zinc-700 rounded-lg mt-2">
                               <ResultsTable result={res} isLoading={false} />
                             </div>
                           )}
@@ -440,12 +440,12 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
           </div>
 
           {/* Right: Editor + Results */}
-          <div className="flex-1 flex flex-col">
-            <div className="flex-1">
+          <div className="flex-1 flex flex-col overflow-hidden">
+            <div className="h-[300px] shrink-0">
               <SqlEditor value={query} onChange={setQuery} onExecute={handleExecute} />
             </div>
 
-            <div className="p-3 border-t border-zinc-800 flex items-center gap-3">
+            <div className="p-3 border-t border-zinc-800 flex items-center gap-3 shrink-0">
               <button
                 onClick={handleExecute}
                 disabled={isLoading || !query.trim()}
@@ -464,9 +464,9 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
               )}
             </div>
 
-            <div className="h-64 border-t border-zinc-800 overflow-auto">
+            <div className="flex-1 border-t border-zinc-800 overflow-hidden min-h-0">
               {results.length > 0 && (
-                <div className="p-4 space-y-3">
+                <div className="h-full overflow-auto p-4 space-y-3">
                   {results.map((res, i) => (
                     <div key={i}>
                       {res.error ? (
@@ -474,7 +474,9 @@ export function LabsView({ currentDatabase, onDatabaseChange }: LabsViewProps) {
                           ❌ {res.error}
                         </div>
                       ) : (
-                        <ResultsTable result={res} isLoading={false} />
+                        <div className="max-h-[400px] overflow-auto border border-zinc-700 rounded-lg">
+                          <ResultsTable result={res} isLoading={false} />
+                        </div>
                       )}
                     </div>
                   ))}

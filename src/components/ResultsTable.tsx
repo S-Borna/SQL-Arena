@@ -3,9 +3,10 @@ import type { QueryResult } from '../types';
 interface ResultsTableProps {
   result: QueryResult | null;
   isLoading: boolean;
+  hideHeader?: boolean;
 }
 
-export function ResultsTable({ result, isLoading }: ResultsTableProps) {
+export function ResultsTable({ result, isLoading, hideHeader = false }: ResultsTableProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full">
@@ -69,23 +70,25 @@ export function ResultsTable({ result, isLoading }: ResultsTableProps) {
   }
 
   return (
-    <div className="h-full flex flex-col">
-      <div className="px-4 py-2 border-b border-white/5 flex items-center justify-between bg-black/20">
-        <span className="text-xs text-zinc-500 font-mono">
-          {result.rowCount} {result.rowCount === 1 ? 'rad' : 'rader'}
-        </span>
-        <span className="text-xs text-cyan-400/50 font-mono">
-          {result.executionTime.toFixed(1)} ms
-        </span>
-      </div>
-      <div className="flex-1 overflow-auto scrollbar-thin">
+    <div className="h-full flex flex-col overflow-hidden">
+      {!hideHeader && (
+        <div className="px-4 py-2 border-b border-white/5 flex items-center justify-between bg-black/20 shrink-0">
+          <span className="text-xs text-zinc-500 font-mono">
+            {result.rowCount} {result.rowCount === 1 ? 'rad' : 'rader'}
+          </span>
+          <span className="text-xs text-cyan-400/50 font-mono">
+            {result.executionTime.toFixed(1)} ms
+          </span>
+        </div>
+      )}
+      <div className="flex-1 overflow-auto scrollbar-thin min-h-0">
         <table className="result-table w-full border-collapse">
-          <thead>
-            <tr className="bg-white/5">
+          <thead className="sticky top-0 z-10">
+            <tr className="bg-zinc-900">
               {result.columns.map((column, index) => (
                 <th
                   key={index}
-                  className="px-4 py-3 text-left text-xs font-bold text-cyan-400 border-b border-white/10 uppercase tracking-wide"
+                  className="px-4 py-3 text-left text-xs font-bold text-cyan-400 border-b border-white/10 uppercase tracking-wide bg-zinc-900"
                 >
                   {column}
                 </th>
