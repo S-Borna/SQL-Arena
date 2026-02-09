@@ -87,11 +87,11 @@ const cheatSheetData: CheatCategory[] = [
         quizQ: 'Vad gör AS i SQL?',
         quizOptions: [
           'Skapar en permanent kolumn',
-          'Ger ett tillfälligt alias till kolumn eller tabell',
           'Filtrerar resultatet',
+          'Ger ett tillfälligt alias till kolumn eller tabell',
           'Sorterar i stigande ordning'
         ],
-        quizCorrect: 1
+        quizCorrect: 2
       }
     ]
   },
@@ -114,11 +114,11 @@ const cheatSheetData: CheatCategory[] = [
         quizQ: 'Vilken operator använder du för "inte lika med" i SQL?',
         quizOptions: [
           '==',
-          '!= eller <>',
+          'NOT EQUAL',
           '!==',
-          'NOT EQUAL'
+          '!= eller <>'
         ],
-        quizCorrect: 1
+        quizCorrect: 3
       },
       {
         syntax: 'AND / OR',
@@ -154,12 +154,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: "WHERE category IN ('A', 'B', 'C')",
         quizQ: 'Vilken sats motsvarar: WHERE id = 1 OR id = 2 OR id = 3?',
         quizOptions: [
-          'WHERE id IN (1, 2, 3)',
           'WHERE id BETWEEN 1 AND 3',
+          'WHERE id IN (1, 2, 3)',
           'WHERE id = (1, 2, 3)',
           'WHERE id MATCH (1, 2, 3)'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'BETWEEN min AND max',
@@ -174,12 +174,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT * FROM products WHERE price BETWEEN 50 AND 100;',
         quizQ: 'Inkluderar BETWEEN gränsvärdena?',
         quizOptions: [
-          'Ja, båda gränsvärdena inkluderas',
-          'Nej, endast värden mellan exkluderas',
           'Bara det lägre värdet inkluderas',
+          'Nej, endast värden mellan exkluderas',
+          'Ja, båda gränsvärdena inkluderas',
           'Bara det högre värdet inkluderas'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'LIKE med % och _',
@@ -195,12 +195,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: "SELECT * FROM users WHERE name LIKE 'S%';",
         quizQ: 'Vad matchar mönstret "A_C"?',
         quizOptions: [
-          'ABC, ADC, AEC (exakt ett tecken mellan)',
+          'Alla som börjar med A och slutar med C',
           'AC, ABC, ABBC (noll eller flera tecken)',
           'Bara exakt "A_C"',
-          'Alla som börjar med A och slutar med C'
+          'ABC, ADC, AEC (exakt ett tecken mellan)'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'IS NULL / IS NOT NULL',
@@ -242,12 +242,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT * FROM products ORDER BY price DESC;',
         quizQ: 'Vad är standardordningen om du inte anger ASC eller DESC?',
         quizOptions: [
-          'ASC (stigande)',
           'DESC (fallande)',
+          'ASC (stigande)',
           'Slumpmässig ordning',
           'Ordningen data lades in'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'LIMIT antal',
@@ -262,12 +262,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT * FROM products ORDER BY price DESC LIMIT 5;',
         quizQ: 'Vad returnerar: SELECT * FROM users LIMIT 1?',
         quizOptions: [
-          'Exakt en rad (den första i resultatet)',
-          'Alla rader utom den första',
           'En slumpmässig rad',
+          'Alla rader utom den första',
+          'Exakt en rad (den första i resultatet)',
           'Fel - LIMIT kräver ORDER BY'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'OFFSET antal',
@@ -283,12 +283,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT * FROM products LIMIT 10 OFFSET 10;',
         quizQ: 'För sida 3 med 10 rader per sida, vad är OFFSET?',
         quizOptions: [
-          '20 (eftersom sida 1=0, sida 2=10, sida 3=20)',
+          '21',
           '30',
           '3',
-          '21'
+          '20 (eftersom sida 1=0, sida 2=10, sida 3=20)'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       }
     ]
   },
@@ -309,12 +309,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT COUNT(DISTINCT category) FROM products;',
         quizQ: 'Vad är skillnaden mellan COUNT(*) och COUNT(email)?',
         quizOptions: [
-          'COUNT(*) räknar alla rader, COUNT(email) hoppar över NULL',
+          'COUNT(email) räknar unika värden',
           'Ingen skillnad',
           'COUNT(*) är snabbare',
-          'COUNT(email) räknar unika värden'
+          'COUNT(*) räknar alla rader, COUNT(email) hoppar över NULL'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'SUM(kolumn)',
@@ -329,12 +329,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT SUM(price * quantity) FROM order_items;',
         quizQ: 'Vad händer om SUM() appliceras på en kolumn med bara NULL-värden?',
         quizOptions: [
-          'Returnerar NULL',
           'Returnerar 0',
+          'Returnerar NULL',
           'Ger ett felmeddelande',
           'Returnerar antalet rader'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'AVG(kolumn)',
@@ -349,12 +349,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT AVG(price) FROM products;',
         quizQ: 'Om du har värden 10, 20, NULL, 30 - vad ger AVG?',
         quizOptions: [
-          '20 (NULL exkluderas, 60/3=20)',
-          '15 (60/4=15 med NULL som 0)',
           'NULL',
+          '15 (60/4=15 med NULL som 0)',
+          '20 (NULL exkluderas, 60/3=20)',
           'Error'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'MIN(kolumn) / MAX(kolumn)',
@@ -369,12 +369,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT MIN(price), MAX(price) FROM products;',
         quizQ: 'Fungerar MIN/MAX på text?',
         quizOptions: [
-          'Ja, sorterar alfabetiskt (A är min, Ö är max)',
+          'Endast i PostgreSQL',
           'Nej, endast numeriska kolumner',
           'Ja, men baserat på textlängd',
-          'Endast i PostgreSQL'
+          'Ja, sorterar alfabetiskt (A är min, Ö är max)'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'GROUP BY kolumn',
@@ -390,12 +390,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT category, COUNT(*) FROM products GROUP BY category;',
         quizQ: 'Vad händer om du SELECT:ar en kolumn som inte är i GROUP BY eller aggregat?',
         quizOptions: [
-          'Fel i de flesta databaser (undefined behavior)',
           'Den första raden i gruppen väljs',
+          'Fel i de flesta databaser (undefined behavior)',
           'Alla värden konkateneras',
           'NULL returneras'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'HAVING villkor',
@@ -411,12 +411,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT category, COUNT(*) FROM products GROUP BY category HAVING COUNT(*) > 10;',
         quizQ: 'Vad är skillnaden mellan WHERE och HAVING?',
         quizOptions: [
-          'WHERE filtrerar före gruppering, HAVING efter',
-          'Ingen skillnad, de är utbytbara',
           'HAVING är snabbare',
+          'Ingen skillnad, de är utbytbara',
+          'WHERE filtrerar före gruppering, HAVING efter',
           'WHERE fungerar bara med text'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       }
     ]
   },
@@ -436,12 +436,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'De exkluderas helt från resultatet.',
         quizQ: 'Om tabell A har 100 rader och tabell B har 50 rader, vad begränsar INNER JOIN-resultatet vid 1:1-relation?',
         quizOptions: [
-          'Antal matchande rader (max 50 vid 1:1)',
+          'Alltid 5000 rader (kartesisk produkt)',
           'Alltid 100 rader',
           'Alltid 150 rader',
-          'Alltid 5000 rader (kartesisk produkt)'
+          'Antal matchande rader (max 50 vid 1:1)'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'LEFT JOIN',
@@ -456,12 +456,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT customers.* FROM customers LEFT JOIN orders ON customers.id = orders.customer_id WHERE orders.id IS NULL;',
         quizQ: 'Vid LEFT JOIN, vad fylls höger tabells kolumner med om ingen matchning finns?',
         quizOptions: [
-          'NULL',
-          '0 eller tom sträng',
           'Raden exkluderas',
+          '0 eller tom sträng',
+          'NULL',
           'Error'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'RIGHT JOIN',
@@ -475,12 +475,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'B LEFT JOIN A (byt ordning på tabellerna)',
         quizQ: 'Varför används RIGHT JOIN sällan i praktiken?',
         quizOptions: [
-          'Kan alltid skrivas som LEFT JOIN med omvänd tabellordning',
+          'Ger oftast fel resultat',
           'Det är långsammare',
           'Stöds inte av alla databaser',
-          'Ger oftast fel resultat'
+          'Kan alltid skrivas som LEFT JOIN med omvänd tabellordning'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'FULL OUTER JOIN',
@@ -513,12 +513,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'När du jämför rader inom samma tabell, t.ex. anställd → chef relationer.',
         quizQ: 'Varför behövs tabellalias vid self JOIN?',
         quizOptions: [
-          'För att skilja på de två referenserna till samma tabell',
           'Det är bara konvention',
+          'För att skilja på de två referenserna till samma tabell',
           'För bättre prestanda',
           'Self JOIN fungerar utan alias'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       }
     ]
   },
@@ -539,12 +539,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);',
         quizQ: 'När måste subquery returnera exakt ett värde?',
         quizOptions: [
-          'Vid jämförelse med = eller > (skalär subquery)',
-          'Alltid',
           'Aldrig, kan alltid returnera flera',
+          'Alltid',
+          'Vid jämförelse med = eller > (skalär subquery)',
           'Endast vid EXISTS'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'EXISTS / NOT EXISTS',
@@ -558,12 +558,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'SELECT * FROM customers c WHERE EXISTS (SELECT 1 FROM orders WHERE customer_id = c.id);',
         quizQ: 'Varför skriver man ofta SELECT 1 i EXISTS-subquery?',
         quizOptions: [
-          'Kolumnerna spelar ingen roll, bara om rader finns',
+          'För att undvika NULL-problem',
           'Det är snabbare än SELECT *',
           'Det krävs av SQL-standarden',
-          'För att undvika NULL-problem'
+          'Kolumnerna spelar ingen roll, bara om rader finns'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'Korrelerad subquery',
@@ -577,12 +577,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Korrelerad refererar till yttre query och körs en gång per rad.',
         quizQ: 'Hur många gånger körs en korrelerad subquery om yttre query har 100 rader?',
         quizOptions: [
-          '100 gånger (en gång per rad)',
           '1 gång',
+          '100 gånger (en gång per rad)',
           'Beror på index',
           'Optimeras alltid till 1 gång'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       }
     ]
   },
@@ -602,12 +602,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'INTEGER eller INT (BIGINT för mycket stora system)',
         quizQ: 'Hur många bytes använder INT vanligtvis?',
         quizOptions: [
-          '4 bytes (ca ±2 miljarder)',
-          '2 bytes',
           '8 bytes',
+          '2 bytes',
+          '4 bytes (ca ±2 miljarder)',
           'Varierar med värdet'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'DECIMAL(p,s) / NUMERIC',
@@ -623,12 +623,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'DECIMAL(precision, scale), t.ex. DECIMAL(10,2) för belopp upp till 99999999.99',
         quizQ: 'Vad betyder DECIMAL(10,2)?',
         quizOptions: [
-          '10 siffror totalt, varav 2 decimaler',
+          '10 bytes med 2 bytes för decimaler',
           '10 heltal, 2 decimaler separat',
           'Max värde 10.2',
-          '10 bytes med 2 bytes för decimaler'
+          '10 siffror totalt, varav 2 decimaler'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'FLOAT / REAL / DOUBLE',
@@ -643,12 +643,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'FLOAT har avrundningsfel som kan ackumuleras, t.ex. 0.1+0.2 ≠ 0.3 exakt.',
         quizQ: 'När är FLOAT lämpligt?',
         quizOptions: [
-          'Vetenskapliga mätningar där liten avvikelse accepteras',
           'Prisberäkningar',
+          'Vetenskapliga mätningar där liten avvikelse accepteras',
           'Banktransaktioner',
           'Lagersaldo'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'VARCHAR(n) / TEXT',
@@ -748,12 +748,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Databasen ger fel och INSERT/UPDATE misslyckas (om FK är aktiverat).',
         quizQ: 'Hur aktiverar du FOREIGN KEY-kontroller i SQLite?',
         quizOptions: [
-          'PRAGMA foreign_keys = ON;',
           'SET FOREIGN_KEYS = TRUE;',
+          'PRAGMA foreign_keys = ON;',
           'De är alltid aktiva',
           'ALTER DATABASE ENABLE FOREIGN_KEYS;'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'ON DELETE / ON UPDATE',
@@ -768,12 +768,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Raderar automatiskt alla beroende rader när den refererade raden raderas.',
         quizQ: 'Om en produkt raderas och order_items har ON DELETE SET NULL på product_id, vad händer?',
         quizOptions: [
-          'product_id sätts till NULL i berörda order_items',
-          'Order_items raderas också',
           'Raderingen blockeras',
+          'Order_items raderas också',
+          'product_id sätts till NULL i berörda order_items',
           'Error kastas'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'UNIQUE',
@@ -787,12 +787,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Ja, UNIQUE tillåter en NULL (eller flera, databasberoende).',
         quizQ: 'Hur många UNIQUE constraints kan en tabell ha?',
         quizOptions: [
-          'Obegränsat antal',
           'Endast en',
+          'Obegränsat antal',
           'Max 3',
           'Lika många som kolumner'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'NOT NULL',
@@ -806,12 +806,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Databasen ger fel och INSERT misslyckas.',
         quizQ: 'Kan PRIMARY KEY vara NULL?',
         quizOptions: [
-          'Nej, PRIMARY KEY är implicit NOT NULL',
-          'Ja, om inte NOT NULL anges explicit',
           'Endast i SQLite',
+          'Ja, om inte NOT NULL anges explicit',
+          'Nej, PRIMARY KEY är implicit NOT NULL',
           'Endast den första kolumnen'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'DEFAULT värde',
@@ -826,12 +826,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'DEFAULT CURRENT_TIMESTAMP på TIMESTAMP/DATETIME-kolumn.',
         quizQ: 'Vad händer med DEFAULT om du explicit INSERT:ar NULL?',
         quizOptions: [
-          'NULL sparas (DEFAULT används bara om kolumn utelämnas)',
+          'Beror på databasen',
           'DEFAULT-värdet används ändå',
           'Error kastas',
-          'Beror på databasen'
+          'NULL sparas (DEFAULT används bara om kolumn utelämnas)'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'CHECK (villkor)',
@@ -967,12 +967,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'INTEGER PRIMARY KEY ger automatiskt auto-increment i SQLite.',
         quizQ: 'Vad krävs minimum för CREATE TABLE?',
         quizOptions: [
-          'Tabellnamn och minst en kolumn med datatyp',
+          'Tabellnamn och minst två kolumner',
           'Tabellnamn, PRIMARY KEY och minst en kolumn',
           'Bara tabellnamn',
-          'Tabellnamn och minst två kolumner'
+          'Tabellnamn och minst en kolumn med datatyp'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       },
       {
         syntax: 'ALTER TABLE',
@@ -989,12 +989,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Nej, SQLite stöder bara ADD COLUMN. Måste återskapa tabellen.',
         quizQ: 'Hur lägger du till en kolumn "age" i tabellen "users"?',
         quizOptions: [
-          'ALTER TABLE users ADD COLUMN age INTEGER;',
           'UPDATE TABLE users ADD age INTEGER;',
+          'ALTER TABLE users ADD COLUMN age INTEGER;',
           'MODIFY TABLE users ADD age INTEGER;',
           'INSERT COLUMN age INTO users;'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'DROP TABLE',
@@ -1010,12 +1010,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'DROP TABLE IF EXISTS tabellnamn;',
         quizQ: 'Vad gör DROP TABLE CASCADE?',
         quizOptions: [
-          'Raderar tabellen och alla objekt som beror på den',
-          'Raderar bara tomma tabeller',
           'Raderar alla tabeller i databasen',
+          'Raderar bara tomma tabeller',
+          'Raderar tabellen och alla objekt som beror på den',
           'Raderar tabellen men behåller data'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       }
     ]
   },
@@ -1036,12 +1036,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'INSERT INTO tabell (kolumner) VALUES (rad1), (rad2), (rad3);',
         quizQ: 'Vad händer om du inte anger en kolumn med NOT NULL och utan DEFAULT?',
         quizOptions: [
-          'INSERT misslyckas med fel',
           'NULL sätts automatiskt',
+          'INSERT misslyckas med fel',
           '0 eller tom sträng sätts',
           'Kolumnen hoppas över'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'UPDATE',
@@ -1057,12 +1057,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: "UPDATE tabell SET kolumn1 = värde1, kolumn2 = värde2 WHERE villkor;",
         quizQ: 'Vad händer vid UPDATE utan WHERE?',
         quizOptions: [
-          'ALLA rader i tabellen uppdateras',
-          'Ingenting händer',
           'Fel kastas',
+          'Ingenting händer',
+          'ALLA rader i tabellen uppdateras',
           'Första raden uppdateras'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'DELETE FROM',
@@ -1078,12 +1078,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'DELETE FROM users WHERE active = FALSE;',
         quizQ: 'Vad är skillnaden mellan DELETE och TRUNCATE?',
         quizOptions: [
-          'DELETE kan ha WHERE och loggas, TRUNCATE tömmer allt snabbt',
+          'DELETE är snabbare',
           'Ingen skillnad',
           'TRUNCATE är säkrare',
-          'DELETE är snabbare'
+          'DELETE kan ha WHERE och loggas, TRUNCATE tömmer allt snabbt'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       }
     ]
   },
@@ -1103,12 +1103,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'AUTOINCREMENT garanterar att raderade IDs aldrig återanvänds, men är långsammare.',
         quizQ: 'I SQLite, vad ger automatisk ID-generering?',
         quizOptions: [
-          'INTEGER PRIMARY KEY',
           'INT AUTO_INCREMENT',
+          'INTEGER PRIMARY KEY',
           'SERIAL',
           'ID IDENTITY'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: 'PRAGMA',
@@ -1123,12 +1123,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'PRAGMA table_info(tabellnamn);',
         quizQ: 'Vad är PRAGMA specifikt för?',
         quizOptions: [
-          'SQLite',
-          'Alla SQL-databaser',
           'MySQL',
+          'Alla SQL-databaser',
+          'SQLite',
           'PostgreSQL'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       },
       {
         syntax: 'Dynamisk typning',
@@ -1143,12 +1143,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Ja, SQLite har dynamisk typning och accepterar det (men det är dålig praxis).',
         quizQ: 'Vad är "type affinity" i SQLite?',
         quizOptions: [
-          'Kolumner har typpreferens men accepterar andra typer',
+          'Typer bestäms vid första INSERT',
           'Strikt typkontroll som andra databaser',
           'Automatisk typkonvertering till rätt typ',
-          'Typer bestäms vid första INSERT'
+          'Kolumner har typpreferens men accepterar andra typer'
         ],
-        quizCorrect: 0
+        quizCorrect: 3
       }
     ]
   },
@@ -1189,12 +1189,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'Vid composite primary key - kontrollera att inget beror på bara en del av nyckeln.',
         quizQ: 'Om PK är (A, B) och kolumn C beror bara på A, vilken normalform bryts?',
         quizOptions: [
-          '2NF (partiellt beroende)',
           '1NF',
+          '2NF (partiellt beroende)',
           '3NF',
           'Ingen, det är ok'
         ],
-        quizCorrect: 0
+        quizCorrect: 1
       },
       {
         syntax: '3NF - Tredje normalformen',
@@ -1208,12 +1208,12 @@ const cheatSheetData: CheatCategory[] = [
         flashcardA: 'När A → B → C, dvs C beror på A via B. B bör separeras till egen tabell.',
         quizQ: 'employees har zip_code och city där city beror på zip_code. Vilken normalform bryts?',
         quizOptions: [
-          '3NF (transitivt beroende)',
-          '1NF',
           '2NF',
+          '1NF',
+          '3NF (transitivt beroende)',
           'Ingen normalform bryts'
         ],
-        quizCorrect: 0
+        quizCorrect: 2
       }
     ]
   }
