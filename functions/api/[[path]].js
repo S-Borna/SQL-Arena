@@ -53,8 +53,18 @@ export async function onRequest(context) {
         });
 
     } catch (error) {
-        return new Response(JSON.stringify({ error: error.message }), {
-            status: 500,
+        // Log full error server-side for diagnostics
+        console.error(`[API Error] ${request.method} ${path}:`, error.message, error.stack);
+
+        // Return user-friendly message — never expose internal DB errors to client
+        const isDbError = error.message?.includes('D1_ERROR') || error.message?.includes('SQLITE_ERROR');
+        const userMessage = isDbError
+            ? 'Tjänsten är tillfälligt otillgänglig. Försök igen om en stund.'
+            : error.message || 'Ett oväntat fel uppstod';
+        const statusCode = isDbError ? 503 : 500;
+
+        return new Response(JSON.stringify({ error: userMessage }), {
+            status: statusCode,
             headers: { ...corsHeaders, 'Content-Type': 'application/json' }
         });
     }
