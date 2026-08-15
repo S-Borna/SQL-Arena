@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Internal AI-agent tooling, not portfolio-relevant
+CLAUDE.md
+
+# Vite dependency pre-bundling cache, not source
+.vite/
